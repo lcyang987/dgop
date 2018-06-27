@@ -1,0 +1,30 @@
+
+import login from './login';
+import dict from './dict';
+import menu from './menu';
+import breadcrumb from './breadcrumb';
+import tabs from './tabs';
+import userCenter from './userCenter';
+import sys from './sys';
+import audit from './audit';
+import cropManager from './cropManager';
+import machineManager from './machineManager';
+import jobTypeManager from './jobTypeManager';
+
+export const LOGIN = login;
+export const DICT = dict;
+export const MENU = menu;
+export const BREADCRUMB = breadcrumb;
+export const TABS = tabs;
+export const USERCENTER = userCenter;
+export const MENU_MANAGER = sys.menuManager;
+export const ROLE_MANAGER = sys.roleManager;
+export const USER_MANAGER = sys.userManager;
+export const BANK_CONFIG = sys.basic.bankConfig;
+export const DICT_MANAGER = sys.basic.dictManager;
+export const AUDIT_MEMBER = audit.auditMember;
+export const AUDIT_MACHINE = audit.auditMachine;
+export const AUDIT_JOBDEMAND = audit.auditJobDemand;
+export const CROP_MANAGER = cropManager;
+export const MACHINE_MANAGER = machineManager;
+export const JOBTYPE_MANAGER =jobTypeManager;
