@@ -10,6 +10,8 @@ import audit from './audit';
 import cropManager from './cropManager';
 import machineManager from './machineManager';
 import jobTypeManager from './jobTypeManager';
+import withdraw from './withdraw';
+import jobDemandManager from './jobDemandManager';
 
 export const LOGIN = login;
 export const DICT = dict;
@@ -27,4 +29,8 @@ export const AUDIT_MACHINE = audit.auditMachine;
 export const AUDIT_JOBDEMAND = audit.auditJobDemand;
 export const CROP_MANAGER = cropManager;
 export const MACHINE_MANAGER = machineManager;
-export const JOBTYPE_MANAGER =jobTypeManager;
+export const JOBTYPE_MANAGER = jobTypeManager;
+export const ACCEPT_WITHDRAW_APPLY = withdraw.acceptWithdrawApply;
+export const COLLECT_WITHDRAW_APPLY = withdraw.collectWithdrawApply;
+export const HANDLE_WITHDRAW = withdraw.handleWithdraw;
+export const JOBDEMAND_MANAGER = jobDemandManager;

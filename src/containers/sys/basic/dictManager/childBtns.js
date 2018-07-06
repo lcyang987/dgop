@@ -7,16 +7,16 @@ import { DICT_MANAGER } from '@/actions';
 class ContainersDictManagerChildBtns extends Component {
   static propTypes = {
     table: PropTypes.array.isRequired,
-    formData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
+    searchData: PropTypes.object.isRequired,
+    formSetData: PropTypes.func.isRequired,
     hide: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
     show: PropTypes.func.isRequired,
   }
   onClick() {
-    const codeType = this.props.formData.codeType;
     this.props.reset();
-    this.props.setData({ codeType });
+    this.props.formSetData({ codeType: this.props.searchData.codeType });
     this.props.show('新增字典');
   }
   render() {
@@ -33,15 +33,15 @@ const mapStateToProps = state => {
   const data = state.sys.basic.dictManager;
   return {
     table: data.childTable.data,
-    formData: data.childForm.data,
     loading: data.childTable.loading,
+    searchData: data.childTable.searchData,    
   }
 }
 
 const methods = DICT_MANAGER;
 
 const mapDispatchToProps = {
-  setData: methods.childFormSetData,
+  formSetData: methods.childFormSetData,
   hide: methods.childTableHide,
   reset: methods.childFormReset,
   show: methods.childFormShow,

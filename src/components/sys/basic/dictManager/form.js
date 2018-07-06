@@ -61,8 +61,8 @@ class ComponentsDictManagerForm extends Component {
                     required: true,
                     message: '请输入类型代码!',
                   }, {
-                    max: 20,
-                    message: '不能超过20个字'
+                    max: 30,
+                    message: '不能超过30个字'
                   }],
                 })(
                   <Input placeholder={'例如：code'} />

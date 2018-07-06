@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { CROP_MANAGER } from '@/actions';
 import ThisSearchForm from '@/components/cropManager/searchForm';
 
-class search extends Component {
+class ContainersCropManagerSearch extends Component {
   static propTypes = {
     table: PropTypes.array.isRequired,
     searchData: PropTypes.object.isRequired,
@@ -31,4 +31,4 @@ const mapDispatchToProps = {
   tableGet: methods.tableGet,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(search)
+export default connect(mapStateToProps, mapDispatchToProps)(ContainersCropManagerSearch)

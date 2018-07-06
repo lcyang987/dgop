@@ -2,12 +2,15 @@ import React from 'react';
 import { Table } from 'antd';
 import PropTypes from 'prop-types';
 
-const SingleTable = ({ columns, table, loading }) => (
+const SingleTable = ({ className, scroll, rowSelection, columns, table, loading }) => (
   <React.Fragment>
     {
       table && table.length ?
         <Table
           rowKey="id"
+          className={className || undefined}
+          scroll={scroll || undefined}
+          rowSelection={rowSelection ? rowSelection : undefined}
           columns={columns}
           dataSource={table}
           loading={loading}

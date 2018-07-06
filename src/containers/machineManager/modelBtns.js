@@ -7,17 +7,18 @@ import { MACHINE_MANAGER } from '@/actions';
 class ContainersMachineManagerModelBtns extends Component {
   static propTypes = {
     table: PropTypes.array.isRequired,
-    formData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
+    searchData: PropTypes.object.isRequired,
     hide: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
     show: PropTypes.func.isRequired,
   }
   onClick() {
-    const machineId = this.props.formData.machineId;
-    const machineName = this.props.formData.machineName;
     this.props.reset();
-    this.props.setData({ machineId, machineName });
+    this.props.setData({
+      machineId: this.props.searchData.id,
+      machineName: this.props.searchData.name,
+    });
     this.props.show('新增型号');
   }
   render() {
@@ -25,7 +26,7 @@ class ContainersMachineManagerModelBtns extends Component {
       <div style={{ margin: 6 }}>
         <Button onClick={this.onClick.bind(this)} loading={this.props.loading || this.props.table.some(t => t.loading)}>新增型号</Button>
         <Button onClick={this.props.hide} style={{ margin: '0 6px' }} type="danger">关闭</Button>
-        一 {this.props.formData.machineName}
+        一 {this.props.searchData.name}
       </div>
     )
   }
@@ -35,8 +36,8 @@ const mapStateToProps = state => {
   const data = state.machineManager;
   return {
     table: data.modelTable.data,
-    formData: data.modelForm.data,
     loading: data.modelTable.loading,
+    searchData: data.modelTable.searchData,
   }
 }
 

@@ -25,7 +25,7 @@ class ContainersCropManagerBtns extends Component {
 }
 
 const mapStateToProps = state => {
-  const data = state.sys.basic.bankConfig;
+  const data = state.cropManager;
   return {
     table: data.table.data,
     loading: data.table.loading,

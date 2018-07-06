@@ -7,7 +7,7 @@ import ThisTable from '@/components/cropManager/table';
 
 const confirm = Modal.confirm;
 
-class table extends Component {
+class ContainersCropManagerTable extends Component {
   static propTypes = {
     table: PropTypes.array.isRequired,
     count: PropTypes.number.isRequired,
@@ -76,4 +76,4 @@ const mapDispatchToProps = {
   tableRemove: methods.tableRemove,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(table)
+export default connect(mapStateToProps, mapDispatchToProps)(ContainersCropManagerTable)

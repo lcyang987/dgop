@@ -1,19 +1,23 @@
 import React from 'react';
 import { Table } from 'antd';
 import PropTypes from 'prop-types';
+import '@/style/expandTable.css'
 
-const PagesTable = ({ columns, defaultExpandAllRows, expandedRowRender, tableGet, table, count, searchData, loading }) => (
+const PagesTable = ({ className, scroll, columns, defaultExpandAllRows, expandedRowRender, onExpand, tableGet, table, count, searchData, loading }) => (
   <React.Fragment>
     {
       table && table.length ?
         <Table
           rowKey="id"
+          className={className || undefined}
+          scroll={scroll || undefined}
           columns={columns}
           dataSource={table}
           loading={loading}
           size="middle"
           defaultExpandAllRows={defaultExpandAllRows}
           expandedRowRender={expandedRowRender}
+          onExpand={onExpand || undefined}
           pagination={{
             showSizeChanger: true, showQuickJumper: true, pageSizeOptions: ['2', '5', '10', '20', '30', '40'],
             current: searchData.currentPage, pageSize: searchData.pageSize, total: count,

@@ -53,8 +53,8 @@ class ComponentsDictManagerChildForm extends Component {
                     pattern: /^\w+$/,
                     message: '必须是英文数字下划线!',
                   }, {
-                    max: 20,
-                    message: '不能超过20个字'
+                    max: 30,
+                    message: '不能超过30个字'
                   }],
                 })(
                   <Input placeholder={'例如：chutou'} />
@@ -88,7 +88,7 @@ class ComponentsDictManagerChildForm extends Component {
                 )}
               </FormItem>
             </Col>
-            <Col span={12}>
+            {/* <Col span={12}>
               <FormItem label={'索引'} {...formItemLayout}>
                 {getFieldDecorator('indexKey', {
                   rules: [{
@@ -99,7 +99,7 @@ class ComponentsDictManagerChildForm extends Component {
                   <Input placeholder={'例如：code'} />
                 )}
               </FormItem>
-            </Col>
+            </Col> */}
             <Col span={12}>
               <FormItem label={'排序'} {...formItemLayout}>
                 {getFieldDecorator('sort', {

@@ -147,6 +147,7 @@ const brandTableInitState = {
   data: [],
   visible: false,
   loading: false,
+  searchData: {},
 }
 
 const brandTable = (state = brandTableInitState, action) => {
@@ -154,6 +155,10 @@ const brandTable = (state = brandTableInitState, action) => {
     case thunkTypes.brandTableGet.REQUESTTYPE:
       return {
         ...state,
+        searchData: {
+          ...state.searchData,
+          ...action.params,
+        },
         loading: true,
       }
     case thunkTypes.brandTableGet.SUCCESSTYPE:
@@ -214,10 +219,7 @@ const brandForm = (state = brandFormInitState, action) => {
     case actionTypes.BRANDFORM_SETDATA:
       return {
         ...state,
-        data: {
-          ...state.data,
-          ...action.params,
-        },
+        data: action.params,
       }
     case actionTypes.BRANDFORM_RESET:
       return {
@@ -263,6 +265,7 @@ const componentTableInitState = {
   data: [],
   visible: false,
   loading: false,
+  searchData: {},
 }
 
 const componentTable = (state = componentTableInitState, action) => {
@@ -270,6 +273,10 @@ const componentTable = (state = componentTableInitState, action) => {
     case thunkTypes.componentTableGet.REQUESTTYPE:
       return {
         ...state,
+        searchData: {
+          ...state.searchData,
+          ...action.params,
+        },
         loading: true,
       }
     case thunkTypes.componentTableGet.SUCCESSTYPE:
@@ -315,10 +322,7 @@ const componentForm = (state = componentFormInitState, action) => {
     case actionTypes.COMPONENTFORM_SETDATA:
       return {
         ...state,
-        data: {
-          ...state.data,
-          ...action.params,
-        },
+        data: action.params,
       }
     case actionTypes.COMPONENTFORM_RESET:
       return {
@@ -364,6 +368,7 @@ const modelTableInitState = {
   data: [],
   visible: false,
   loading: false,
+  searchData: {},
 }
 
 const modelTable = (state = modelTableInitState, action) => {
@@ -371,6 +376,10 @@ const modelTable = (state = modelTableInitState, action) => {
     case thunkTypes.modelTableGet.REQUESTTYPE:
       return {
         ...state,
+        searchData: {
+          ...state.searchData,
+          ...action.params,
+        },
         loading: true,
       }
     case thunkTypes.modelTableGet.SUCCESSTYPE:
@@ -416,10 +425,7 @@ const modelForm = (state = modelFormInitState, action) => {
     case actionTypes.MODELFORM_SETDATA:
       return {
         ...state,
-        data: {
-          ...state.data,
-          ...action.params,
-        },
+        data: action.params,
       }
     case actionTypes.MODELFORM_RESET:
       return {

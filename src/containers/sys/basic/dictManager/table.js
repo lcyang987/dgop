@@ -8,8 +8,8 @@ class ContainersDictManagerTable extends Component {
   static propTypes = {
     table: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
-    childFormData: PropTypes.object.isRequired,
     childTableVisible: PropTypes.bool.isRequired,
+    childTableSearchData: PropTypes.object.isRequired,
     tableGet: PropTypes.func.isRequired,
     formGetMenuTree: PropTypes.func.isRequired,
     formReset: PropTypes.func.isRequired,
@@ -35,7 +35,7 @@ class ContainersDictManagerTable extends Component {
     this.props.childTableReset();
     this.props.childTableShow();
     this.props.childTableGet({ codeType: record.typeValue });
-    this.props.childFormSetData({ codeType: record.typeValue });
+    // this.props.childFormSetData({ codeType: record.typeValue });
   }
   render() {
     return <ThisTable {...this.props} get={this.get} read={this.read} />
@@ -47,8 +47,8 @@ const mapStateToProps = state => {
   return {
     table: data.table.data,
     loading: data.table.loading,
-    childFormData: data.childForm.data,
     childTableVisible: data.childTable.visible,
+    childTableSearchData: data.childTable.searchData,
   }
 }
 

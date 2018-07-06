@@ -7,11 +7,11 @@ class ComponentsMachineManagerTable extends Component {
   static propTypes  = {
     table: PropTypes.array.isRequired,
     brandTableVisible: PropTypes.bool.isRequired,
-    brandFormData: PropTypes.object.isRequired,
+    brandTableSearchData: PropTypes.object.isRequired,
     componentTableVisible: PropTypes.bool.isRequired,
-    componentFormData: PropTypes.object.isRequired,
+    componentTableSearchData: PropTypes.object.isRequired,
     modelTableVisible: PropTypes.bool.isRequired,
-    modelFormData: PropTypes.object.isRequired,
+    modelTableSearchData: PropTypes.object.isRequired,
     get: PropTypes.func.isRequired,
     toggle: PropTypes.func.isRequired,
     remove: PropTypes.func.isRequired,
@@ -39,7 +39,7 @@ class ComponentsMachineManagerTable extends Component {
           <Divider type="vertical" />
           {
             this.props.brandTableVisible ?
-            this.props.brandFormData.machineId === record.id ?
+            this.props.brandTableSearchData.id === record.id ?
             <span><Icon type="folder-open" /> 当前品牌...</span> :
             <a onClick={this.props.brandRead.bind(this, record)}>切换品牌</a> :
             <a onClick={this.props.brandRead.bind(this, record)}>查看品牌</a>
@@ -47,7 +47,7 @@ class ComponentsMachineManagerTable extends Component {
           <Divider type="vertical" />
           {
             this.props.componentTableVisible ?
-            this.props.componentFormData.machineId === record.id ?
+            this.props.componentTableSearchData.id === record.id ?
             <span><Icon type="folder-open" /> 当前组件...</span> :
             <a onClick={this.props.componentRead.bind(this, record)}>切换组件</a> :
             <a onClick={this.props.componentRead.bind(this, record)}>查看组件</a>
@@ -55,7 +55,7 @@ class ComponentsMachineManagerTable extends Component {
           <Divider type="vertical" />
           {
             this.props.modelTableVisible ?
-            this.props.modelFormData.machineId === record.id ?
+            this.props.modelTableSearchData.id === record.id ?
             <span><Icon type="folder-open" /> 当前型号...</span> :
             <a onClick={this.props.modelRead.bind(this, record)}>切换型号</a> :
             <a onClick={this.props.modelRead.bind(this, record)}>查看型号</a>

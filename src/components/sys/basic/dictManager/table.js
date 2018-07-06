@@ -6,7 +6,7 @@ import SingleTable from '@/components/common/SingleTable';
 class ComponentsDictManagerTable extends Component {
   static propTypes  = {
     childTableVisible: PropTypes.bool.isRequired,
-    childFormData: PropTypes.object.isRequired,
+    childTableSearchData: PropTypes.object.isRequired,
     get: PropTypes.func.isRequired,
     read: PropTypes.func.isRequired,
   }
@@ -25,7 +25,7 @@ class ComponentsDictManagerTable extends Component {
           <Divider type="vertical" />
           {
             this.props.childTableVisible ?
-            this.props.childFormData.codeType === record.typeValue ?
+            this.props.childTableSearchData.codeType === record.typeValue ?
             <span><Icon type="folder-open" /> 当前字典...</span> :
             <a onClick={this.props.read.bind(this, record)}>切换字典</a> :
             <a onClick={this.props.read.bind(this, record)}>查看字典</a>

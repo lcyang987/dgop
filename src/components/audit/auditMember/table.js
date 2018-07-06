@@ -71,7 +71,7 @@ class ComponentsAuditMemberTable extends Component {
         </span>
       ),
     }];
-    return <PagesExpandedRowTable {...this.props} columns={columns} expandedRowRender={expandedRowRender} />
+    return <PagesExpandedRowTable {...this.props} columns={columns} expandedRowRender={expandedRowRender} className='components-table-demo-nested' />
   }
 }
 

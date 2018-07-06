@@ -128,7 +128,7 @@ const map = (state = mapInitState, action) => {
     case actionTypes.MAP_RESET:
       return {
         ...state,
-        data: formInitState.data
+        data: mapInitState.data
       }
     case actionTypes.MAP_SETDATA:
       return {

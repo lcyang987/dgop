@@ -28,7 +28,6 @@ const tableGet = params => dispatch => dispatch({
   }
 });
 
-
 const tableSuccess = params => dispatch => dispatch({
   [APIS.AUDIT_MEMBER_TABLE_SUCCESS_API]: {
     types: Object.values(thunk.tableSuccess),

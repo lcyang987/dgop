@@ -34,7 +34,7 @@ class ComponentsAuditJobDemandTable extends Component {
       title: '会员名称',
       dataIndex: 'memberName',
     }, {
-      title: '会员手机号码',
+      title: '会员手机',
       dataIndex: 'memberPhone',
     }, {
       title: '省市区',
@@ -49,7 +49,7 @@ class ComponentsAuditJobDemandTable extends Component {
       title: '作业作物名称',
       render: (text, record) => (
         record.demandDetail.map((item, i, arr) => (
-          <Popover title={`${item.jobTypeName} - 详情`} trigger="click" key={i} content={(
+          <Popover placement="bottom" title={`${item.jobTypeName} - 详情`} trigger="click" key={i} content={(
             <div>
               <p>每天作业数量: {item.dailyQuantity}</p>
               <p>每亩作业数量: {item.totalQuantity}</p>
@@ -90,7 +90,7 @@ class ComponentsAuditJobDemandTable extends Component {
         </span>
       ),
     }];
-    return <PagesExpandedRowTable {...this.props} columns={columns} expandedRowRender={expandedRowRender} />
+    return <PagesExpandedRowTable {...this.props} scroll={{ x: true }} columns={columns} expandedRowRender={expandedRowRender} className='components-table-demo-nested tablexscroll' />
   }
 }
 

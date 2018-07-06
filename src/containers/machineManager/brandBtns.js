@@ -9,17 +9,18 @@ class ContainersMachineManagerBrandBtns extends Component {
     dictData: PropTypes.object.isRequired,
     dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
-    formData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
+    searchData: PropTypes.object.isRequired,
     hide: PropTypes.func.isRequired,
     reset: PropTypes.func.isRequired,
     show: PropTypes.func.isRequired,
   }
   onClick() {
-    const machineId = this.props.formData.machineId;
-    const machineName = this.props.formData.machineName;
     this.props.reset();
-    this.props.setData({ machineId, machineName });
+    this.props.setData({
+      machineId: this.props.searchData.id,
+      machineName: this.props.searchData.name,
+    });
     this.props.show('新增品牌');
   }
   render() {
@@ -28,7 +29,7 @@ class ContainersMachineManagerBrandBtns extends Component {
       <div style={{ margin: 6 }}>
         <Button onClick={this.onClick.bind(this)} loading={this.props.loading || this.props.table.some(t => t.loading)} disabled={!BRANDFilter.length}>{BRANDFilter.length ? '新增品牌' : '品牌已用完'}</Button>
         <Button onClick={this.props.hide} style={{ margin: '0 6px' }} type="danger">关闭</Button>
-        一 {this.props.formData.machineName}
+        一 {this.props.searchData.name}
       </div>
     )
   }
@@ -41,8 +42,8 @@ const mapStateToProps = state => {
     dictData: dict.data,
     dictLoading: dict.loading,
     table: data.brandTable.data,
-    formData: data.brandForm.data,
     loading: data.brandTable.loading,
+    searchData: data.brandTable.searchData,
   }
 }
 

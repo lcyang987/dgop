@@ -30,9 +30,6 @@ const table = (state = tableInitState, action) => {
         ...state,
         data: action.response.result,
         count: action.response.count,
-        searchData: {
-          ...state.searchData,
-        },
         loading: false
       }
     case thunkTypes.tableGet.FAILURETYPE:

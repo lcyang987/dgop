@@ -8,8 +8,8 @@ import ThisTable from '@/components/sys/basic/dictManager/childTable';
 class ContainersDictManagerChildTable extends Component {
   static propTypes = {
     table: PropTypes.array.isRequired,
-    formData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
+    searchData: PropTypes.object.isRequired,
     tableGet: PropTypes.func.isRequired,
     tableToggle: PropTypes.func.isRequired,
     formSetData: PropTypes.func.isRequired,
@@ -18,9 +18,8 @@ class ContainersDictManagerChildTable extends Component {
     formShow: PropTypes.func.isRequired,
   }
   get(record) {
-    const codeType = this.props.formData.codeType;
     this.props.formReset();
-    this.props.formSetData({ codeType });
+    this.props.formSetData({ codeType: this.props.searchData.codeType });
     this.props.formShow(`编辑 一 ${record.codeName}`);
     this.props.formGet({ id: record.id });
   }
@@ -39,8 +38,8 @@ const mapStateToProps = state => {
   const data = state.sys.basic.dictManager;
   return {
     table: data.childTable.data,
-    formData: data.childForm.data,
     loading: data.childTable.loading,
+    searchData: data.childTable.searchData,
   }
 }
 

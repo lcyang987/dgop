@@ -17,7 +17,7 @@ const table = (state = tableInitState, action) => {
         loading: true,
       }
     case thunkTypes.tableGet.SUCCESSTYPE:
-      function arrToTree(tree, data, parent, parentUrl) {
+      function arrToTree(tree, data, parent) {
         for (var i = 0; i < data.length; i++) {
           if (data[i].pid === parent) {
             data[i].children = []
@@ -25,7 +25,7 @@ const table = (state = tableInitState, action) => {
             tree.push(json)
             data.splice(i, 1)
             i--
-            arrToTree(json.children, data, json.id, json.url)
+            arrToTree(json.children, data, json.id)
           }
         }
       }
@@ -168,6 +168,7 @@ const childTableInitState = {
   data: [],
   visible: false,
   loading: false,
+  searchData: {},
 }
 
 const childTable = (state = childTableInitState, action) => {
@@ -175,6 +176,10 @@ const childTable = (state = childTableInitState, action) => {
     case thunkTypes.childTableGet.REQUESTTYPE:
       return {
         ...state,
+        searchData: {
+          ...state.searchData,
+          ...action.params,
+        },
         loading: true,
       }
     case thunkTypes.childTableGet.SUCCESSTYPE:

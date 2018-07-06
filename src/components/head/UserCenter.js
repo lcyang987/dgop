@@ -7,7 +7,7 @@ const empty = '暂无';
 const UserCenter = ({ visible, hide, userCenterData }) => (
   <Modal
     title="用户详情"
-    width={645}
+    width={780}
     visible={visible}
     onCancel={hide}
     footer={false}
@@ -22,6 +22,7 @@ const UserCenter = ({ visible, hide, userCenterData }) => (
             `工号: ${userCenterData.jobNumber || empty}`,
             `在职状态: ${{ incumbency: '在职', practice: '实习', concurrent_post: '兼职', quit: '离职' }[userCenterData.workStatus] || empty}`,
             `微信: ${userCenterData.wechatNumber || empty}`,
+            '',
           ]}
           renderItem={item => (<List.Item>{item}</List.Item>)}
         />
@@ -35,16 +36,19 @@ const UserCenter = ({ visible, hide, userCenterData }) => (
             `性别: ${userCenterData.sex === 'M' ? '男' : '女' || empty}`,
             `是否使用: ${userCenterData.status === 'y' ? '是' : '否' || empty}`,
             `QQ: ${userCenterData.qq || empty}`,
+            '',
           ]}
           renderItem={item => (<List.Item>{item}</List.Item>)}
         />
       </Col>
       <Col span={6} offset={1}>
-        <img
-          style={{ border: '1px dashed #dedddd', borderRadius: 6, padding: 8, width: 150, height: 150, display: 'block', margin: '4px auto' }}
-          src={`${userCenterData.headPortraitUrl}/w/150/h/150`}
-          alt="头像"
-        />
+        <a href={userCenterData.headPortraitUrl} target="_blank">
+          <img
+            style={{ border: '1px dashed #dedddd', borderRadius: 6, padding: 8, width: 190, height: 190, display: 'block', margin: '0 auto' }}
+            src={`${userCenterData.headPortraitUrl}/w/172/h/172`}
+            alt="头像"
+          />
+        </a>
       </Col>
       <Col span={24}>
         <List

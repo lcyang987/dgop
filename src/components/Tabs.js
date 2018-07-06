@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Tabs, Icon, Menu, Dropdown, Button } from 'antd';
 import PropTypes from 'prop-types';
+import '@/style/tablexscroll.css';
 import Home from '@/components/Home';
 import MenuManager from '@/components/sys/menuManager';
 import RoleManager from '@/components/sys/roleManager';
@@ -13,6 +14,10 @@ import AuditJobDemand from '@/containers/audit/auditJobDemand';
 import CropManager from '@/components/cropManager';
 import MachineManager from '@/containers/machineManager';
 import JobTypeManager from '@/containers/jobTypeManager';
+import AcceptWithdrawApply from '@/components/withdraw/acceptWithdrawApply';
+import CollectWithdrawApply from '@/components/withdraw/collectWithdrawApply';
+import HandleWithdraw from '@/components/withdraw/handleWithdraw';
+import JobDemandManager from '@/containers/jobDemandManager';
 
 class ComponentsTabs extends Component {
   static components = {
@@ -28,6 +33,10 @@ class ComponentsTabs extends Component {
     AuditJobDemand,
     MachineManager,
     JobTypeManager,
+    AcceptWithdrawApply,
+    CollectWithdrawApply,
+    HandleWithdraw,
+    JobDemandManager,
   }
   static propTypes = {
     tabs: PropTypes.array.isRequired,

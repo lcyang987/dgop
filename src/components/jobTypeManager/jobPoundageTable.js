@@ -141,6 +141,7 @@ class ComponentsJobTypeManagerJobPoundageTable extends Component {
         pattern: /^[0-9]+[.]?[0-9]{0,2}[0]*$/,
         message: '最多两位小数'
       }],
+      render: text => `￥${text}`,
     }, {
       title: '备注',
       dataIndex: 'comment',

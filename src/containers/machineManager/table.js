@@ -13,12 +13,12 @@ class ContainersMachineManagerTable extends Component {
     searchData: PropTypes.object.isRequired,
     count: PropTypes.number.isRequired,
     loading: PropTypes.bool.isRequired,
-    brandFormData: PropTypes.object.isRequired,
     brandTableVisible: PropTypes.bool.isRequired,
-    componentFormData: PropTypes.object.isRequired,
+    brandTableSearchData: PropTypes.object.isRequired,
     componentTableVisible: PropTypes.bool.isRequired,
-    modelFormData: PropTypes.object.isRequired,
+    componentTableSearchData: PropTypes.object.isRequired,
     modelTableVisible: PropTypes.bool.isRequired,
+    modelTableSearchData: PropTypes.object.isRequired,
     tableGet: PropTypes.func.isRequired,
     tableToggle: PropTypes.func.isRequired,
     formReset: PropTypes.func.isRequired,
@@ -68,20 +68,17 @@ class ContainersMachineManagerTable extends Component {
   brandRead(record) {
     this.props.brandTableReset();
     this.props.brandTableShow();
-    this.props.brandTableGet({ id: record.id });
-    this.props.brandFormSetData({ machineId: record.id, machineName: record.name });
+    this.props.brandTableGet({ id: record.id, name: record.name });
   }
   componentRead(record) {
     this.props.componentTableReset();
     this.props.componentTableShow();
-    this.props.componentTableGet({ id: record.id });
-    this.props.componentFormSetData({ machineId: record.id, machineName: record.name });
+    this.props.componentTableGet({ id: record.id, name: record.name });
   }
   modelRead(record) {
     this.props.modelTableReset();
     this.props.modelTableShow();
-    this.props.modelTableGet({ id: record.id });
-    this.props.modelFormSetData({ machineId: record.id, machineName: record.name });
+    this.props.modelTableGet({ id: record.id, name: record.name });
   }
   render() {
     return <ThisTable {...this.props} get={this.get} toggle={this.toggle} remove={this.remove} brandRead={this.brandRead} componentRead={this.componentRead} modelRead={this.modelRead} />
@@ -95,12 +92,12 @@ const mapStateToProps = state => {
     searchData: data.table.searchData,
     count: data.table.count,
     loading: data.table.loading,
-    brandFormData: data.brandForm.data,
     brandTableVisible: data.brandTable.visible,
-    componentFormData: data.componentForm.data,
+    brandTableSearchData: data.brandTable.searchData,
     componentTableVisible: data.componentTable.visible,
-    modelFormData: data.modelForm.data,
+    componentTableSearchData: data.componentTable.searchData,
     modelTableVisible: data.modelTable.visible,
+    modelTableSearchData: data.modelTable.searchData,
   }
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 import { withRouter, Route } from 'react-router-dom';
-import { LocaleProvider } from 'antd';
+import { LocaleProvider, message } from 'antd';
 import zh_CN from 'antd/lib/locale-provider/zh_CN';
 import App from './App';
 import Login from './Login';
@@ -16,6 +16,11 @@ class Root extends Component {
     if (!this.props.login) {
       this.props.history.replace('/');
     }
+    message.config({
+      top: 0,
+      duration: 10,
+      maxCount: 3,
+    });
   }
   render() {
     return (

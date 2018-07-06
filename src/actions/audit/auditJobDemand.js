@@ -18,7 +18,7 @@ const thunk = {
     SUCCESSTYPE: THISACTION + 'FORM_FAILURE_SUCCESSTYPE',
     FAILURETYPE: THISACTION + 'FORM_FAILURE_FAILURETYPE'
   },
-}
+};
 
 const tableGet = params => dispatch => dispatch({
   [APIS.AUDIT_JOBDEMAND_TABLE_GET_API]: {
@@ -27,7 +27,6 @@ const tableGet = params => dispatch => dispatch({
     params: params,
   }
 });
-
 
 const tableSuccess = params => dispatch => dispatch({
   [APIS.AUDIT_JOBDEMAND_TABLE_SUCCESS_API]: {

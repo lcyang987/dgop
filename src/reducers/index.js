@@ -10,6 +10,8 @@ import audit from './audit';
 import cropManager from './cropManager';
 import machineManager from './machineManager';
 import jobTypeManager from './jobTypeManager';
+import withdraw from './withdraw';
+import jobDemandManager from './jobDemandManager';
 
 export default combineReducers({
   login,
@@ -23,4 +25,6 @@ export default combineReducers({
   cropManager,
   machineManager,
   jobTypeManager,
+  withdraw,
+  jobDemandManager,
 });

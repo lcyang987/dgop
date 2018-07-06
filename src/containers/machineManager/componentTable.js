@@ -10,8 +10,8 @@ const confirm = Modal.confirm;
 class ContainersMachineManagerComponentTable extends Component {
   static propTypes = {
     table: PropTypes.array.isRequired,
-    formData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
+    searchData: PropTypes.object.isRequired,
     tableGet: PropTypes.func.isRequired,
     tableRemove: PropTypes.func.isRequired,
     formSetData: PropTypes.func.isRequired,
@@ -19,10 +19,13 @@ class ContainersMachineManagerComponentTable extends Component {
     formShow: PropTypes.func.isRequired,
   }
   get(record) {
-    const machineId = this.props.formData.machineId;
-    const machineName = this.props.formData.machineName;
     this.props.formReset();
-    this.props.formSetData({ ...record, machineId, machineName });
+    this.props.formSetData({
+      ...record,
+      machineId: this.props.searchData.id,
+      machineName: this.props.searchData.name,
+      sort: '' + record.sort,
+    });
     this.props.formShow(`编辑 一 ${record.name}`);
   }
   toggle(record, bool) {
@@ -43,7 +46,7 @@ class ContainersMachineManagerComponentTable extends Component {
         this.props.tableRemove({
           id: record.id
         }).then(() => {
-          this.props.tableGet({ id: this.props.formData.machineId });
+          this.props.tableGet({ id: this.props.searchData.id });
         });
       },
     });
@@ -57,8 +60,8 @@ const mapStateToProps = state => {
   const data = state.machineManager;
   return {
     table: data.componentTable.data,
-    formData: data.componentForm.data,
     loading: data.componentTable.loading,
+    searchData: data.componentTable.searchData,
   }
 }
 
