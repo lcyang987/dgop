@@ -7,7 +7,6 @@ import ThisForm from '@/components/machineManager/brandForm';
 class ContainersMachineManagerBrandForm extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     visible: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -23,7 +22,7 @@ class ContainersMachineManagerBrandForm extends Component {
         const formData = {
           ...this.props.formData,
           ...values,
-          name: this.props.dictData.BRAND.find(t => t.value === values.code).name,
+          name: this.props.dictData.BRAND[values.code],
         };
         for (var v in formData) {
           formData[v] = formData[v] === undefined ? '' : formData[v];
@@ -36,7 +35,7 @@ class ContainersMachineManagerBrandForm extends Component {
     });
   }
   render() {
-    const BRANDFilter = this.props.dictData.BRAND.filter(t => !this.props.table.map(t => t.code).includes(t.value));
+    const BRANDFilter = Object.entries(this.props.dictData.BRAND).filter(v => !this.props.table.map(t => t.code).includes(v[0]));
     return <ThisForm ref="form" {...this.props} handleSubmit={this.handleSubmit.bind(this)} BRANDFilter={BRANDFilter} />
   }
 };
@@ -46,7 +45,6 @@ const mapStateToProps = state => {
   const data = state.machineManager;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.brandTable.data,
     formData: data.brandForm.data,
     visible: data.brandForm.visible,

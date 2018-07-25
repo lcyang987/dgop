@@ -8,6 +8,7 @@ const Option = Select.Option;
 
 class ComponentsMenuManagerForm extends Component {
   static propTypes = {
+    dictData: PropTypes.object.isRequired,
     menuTree: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     formData: PropTypes.object.isRequired,
@@ -85,8 +86,9 @@ class ComponentsMenuManagerForm extends Component {
                   }],
                 })(
                   <Select onChange={() => setTimeout(() => this.props.form.validateFields(['url'], { force: true }), 0)}>
-                    <Option value="y">是</Option>
-                    <Option value="n">否</Option>
+                    {
+                      Object.entries(this.props.dictData.yorn).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
+                    }
                   </Select>
                 )}
               </FormItem>

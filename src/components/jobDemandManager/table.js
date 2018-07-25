@@ -6,7 +6,6 @@ import PagesTable from '@/components/common/PagesTable';
 class ComponentsJobDemandManagerTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     demandDetailTableVisible: PropTypes.bool.isRequired,
     demandDetailTableSearchData: PropTypes.object.isRequired,
@@ -69,23 +68,23 @@ class ComponentsJobDemandManagerTable extends Component {
     }, {
       title: '总状态',
       dataIndex: 'status',
-      render: text => this.props.dictData.jobDemandManager_status.find(t => t.value === text).name,
+      render: text => this.props.dictData.jobDemandManager_status[text],
     }, {
       title: '审核状态',
       dataIndex: 'auditStatus',
-      render: text => this.props.dictData.jobDemandManager_auditStatus.find(t => t.value === text).name,
+      render: text => this.props.dictData.jobDemandManager_auditStatus[text],
     }, {
       title: '保证金状态',
       dataIndex: 'depositStatus',
-      render: text => this.props.dictData.jobDemandManager_depositStatus.find(t => t.value === text).name,
+      render: text => this.props.dictData.jobDemandManager_depositStatus[text],
     }, {
       title: '发布状态',
       dataIndex: 'publishStatus',
-      render: text => this.props.dictData.jobDemandManager_publishStatus.find(t => t.value === text).name,
+      render: text => this.props.dictData.jobDemandManager_publishStatus[text],
     }, {
       title: '作业状态',
       dataIndex: 'jobStatus',
-      render: text => this.props.dictData.jobDemandManager_jobStatus.find(t => t.value === text).name,
+      render: text => this.props.dictData.jobDemandManager_jobStatus[text],
     }, {
       title: '操作',
       fixed: 'right',

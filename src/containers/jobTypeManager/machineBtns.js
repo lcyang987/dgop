@@ -7,7 +7,6 @@ import { JOBTYPE_MANAGER } from '@/actions';
 class ContainersJobTypeManagerMachinBtns extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     formData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -38,7 +37,6 @@ const mapStateToProps = state => {
   const data = state.jobTypeManager;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.machineTable.data,
     formData: data.machineForm.data,
     loading: data.machineTable.loading,

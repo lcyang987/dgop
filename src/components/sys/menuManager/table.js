@@ -7,6 +7,7 @@ class ComponentsMenuManagerTable extends Component {
   static propTypes = {
     get: PropTypes.func.isRequired,
     remove: PropTypes.func.isRequired,
+    addChild: PropTypes.func.isRequired,
   }
   render() {
     let columns = [{
@@ -39,7 +40,7 @@ class ComponentsMenuManagerTable extends Component {
             record.isLeaf === 'n' ?
               <React.Fragment>
                 <Divider type="vertical" />
-                <a onClick={this.props.addChild.bind(this, record)}>新增菜单</a>
+                <a onClick={this.props.addChild.bind(this, record)}>新增</a>
               </React.Fragment> : ''
           }
         </span>

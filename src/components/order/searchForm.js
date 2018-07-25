@@ -6,7 +6,7 @@ import CommonSearchForm from '@/components/common/SearchForm';
 const FormItem = Form.Item;
 const { Option } = Select;
 
-class ComponentsUserManagerSearchForm extends Component {
+class ComponentsOrderSearchForm extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
@@ -18,41 +18,30 @@ class ComponentsUserManagerSearchForm extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <CommonSearchForm {...this.props} loading={this.props.loading || this.props.table.some(t => t.loading)}>
-        <FormItem label={'帐号'}>
-          {getFieldDecorator('loginName', {
+        <FormItem label={'会员名称'}>
+          {getFieldDecorator('memberName', {
             rules: [{
               max: 20,
               message: '不能超过20个字'
             }],
           })(
-            <Input placeholder={'例如：sys'} />
+            <Input placeholder={'例如：王五'} />
           )}
         </FormItem>
-        <FormItem label={'昵称'}>
-          {getFieldDecorator('nickname', {
-            rules: [{
-              max: 20,
-              message: '不能超过20个字'
-            }],
-          })(
-            <Input placeholder={'例如：超级管理员'} />
+        <FormItem label={'订单类型'}>
+          {getFieldDecorator('orderType')(
+            <Select style={{ minWidth: 94 }}>
+              {
+                [['', '所有']].concat(Object.entries(this.props.dictData.order_type)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
+              }
+            </Select>
           )}
         </FormItem>
-        <FormItem label={'真实姓名'}>
-          {getFieldDecorator('realName', {
-            rules: [{
-              max: 20,
-              message: '不能超过20个字'
-            }],
-          })(
-            <Input placeholder={'例如：张三'} />
-          )}
-        </FormItem>
-        <FormItem label={'是否使用'}>
+        <FormItem label={'订单状态'}>
           {getFieldDecorator('status')(
             <Select style={{ minWidth: 72 }}>
               {
-                [['', '所有']].concat(Object.entries(this.props.dictData.yorn)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
+                [['', '所有']].concat(Object.entries(this.props.dictData.order_status)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
               }
             </Select>
           )}
@@ -72,4 +61,4 @@ export default Form.create({
     }
     return values;
   }
-})(ComponentsUserManagerSearchForm);
+})(ComponentsOrderSearchForm);

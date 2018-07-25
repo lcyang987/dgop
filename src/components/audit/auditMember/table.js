@@ -7,7 +7,6 @@ import SingleTable from '@/components/common/SingleTable';
 class ComponentsAuditMemberTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     get: PropTypes.func.isRequired,
     success: PropTypes.func.isRequired,
     show: PropTypes.func.isRequired,
@@ -17,7 +16,7 @@ class ComponentsAuditMemberTable extends Component {
       const columns = [{
         title: '审核结果',
         dataIndex: 'auditResult',
-        render: text => this.props.dictData.auditResult.find(t => t.value === text).name,
+        render: text => this.props.dictData.auditResult[text],
       }, {
         title: '审核时间',
         dataIndex: 'auditTime',
@@ -25,7 +24,7 @@ class ComponentsAuditMemberTable extends Component {
         title: '备注',
         dataIndex: 'comment',
       }];
-      return <SingleTable columns={columns} table={record.auditHistoryList || []} loading={this.props.dictLoading} defaultExpandAllRows={false} />;
+      return <SingleTable columns={columns} table={record.auditHistoryList || []} loading={false} defaultExpandAllRows={false} />;
     };
     let columns = [{
       title: '证件照',
@@ -54,7 +53,7 @@ class ComponentsAuditMemberTable extends Component {
     }, {
       title: '证件号码',
       dataIndex: 'authenticationType',
-      render: (text, record) => `${this.props.dictData.authenticationType.find(t => t.value === text).name}: ${record.credentialNo}`,
+      render: (text, record) => `${this.props.dictData.authenticationType[text]}: ${record.credentialNo}`,
     }, {
       title: '手机号码',
       dataIndex: 'contactPhone',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Row, Col, Select, Spin } from 'antd';
+import { Form, Input, Row, Col, Select } from 'antd';
 import PropTypes from 'prop-types';
 import CommonFormModal from '@/components/common/FormModal';
 
@@ -37,29 +37,27 @@ class ComponentsMachineManagerBrandForm extends Component {
       },
     };
     if (this.props.formData.id) {
-      this.props.BRANDFilter.push({name: this.props.formData.name, value: this.props.formData.code })
+      this.props.BRANDFilter.push([this.props.formData.code, this.props.formData.name])
     }
     return (
       <CommonFormModal {...this.props} width={700}>
         <Form style={{ margin: '8px 16px' }}>
           <Row>
             <Col span={12}>
-              <Spin spinning={this.props.dictLoading}>
-                <FormItem label={'品牌'} {...formItemLayout}>
-                  {getFieldDecorator('code', {
-                    rules: [{
-                      required: true,
-                      message: '请选择品牌!',
-                    }],
-                  })(
-                    <Select>
-                      {
-                        this.props.BRANDFilter.map(t => <Option key={t.value} value={t.value}>{t.name}</Option>)
-                      }
-                    </Select>
-                  )}
-                </FormItem>
-              </Spin>
+              <FormItem label={'品牌'} {...formItemLayout}>
+                {getFieldDecorator('code', {
+                  rules: [{
+                    required: true,
+                    message: '请选择品牌!',
+                  }],
+                })(
+                  <Select>
+                    {
+                      this.props.BRANDFilter.map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
+                    }
+                  </Select>
+                )}
+              </FormItem>
             </Col>
             {
               !this.props.formData.id ? '' :

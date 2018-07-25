@@ -7,7 +7,6 @@ import ThisForm from '@/components/sys/userManager/form';
 class ContainersUserManagerForm extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     searchData: PropTypes.object.isRequired,
     visible: PropTypes.bool.isRequired,
@@ -49,7 +48,6 @@ const mapStateToProps = state => {
   const data = state.sys.userManager;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.table.data,
     searchData: data.table.searchData,
     visible: data.form.visible,

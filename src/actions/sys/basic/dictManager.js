@@ -131,6 +131,7 @@ const childFormSubmit = params => dispatch => {
 const action = {
   FORM_MENUTREE: THISACTION + 'FORM_MENUTREE',
   FORM_RESET: THISACTION + 'FORM_RESET',
+  FORM_SETDATA: THISACTION + 'FORM_SETDATA',
   FORM_SHOW: THISACTION + 'FORM_SHOW',
   FORM_HIDE: THISACTION + 'FORM_HIDE',
   CHILDTABLE_RESET: THISACTION + 'CHILDTABLE_RESET',
@@ -149,6 +150,11 @@ const formGetMenuTree = opt => dispatch => dispatch({
 
 const formReset = () => dispatch => dispatch({
   type: action.FORM_RESET,
+});
+
+const formSetData = params => dispatch => dispatch({
+  type: action.FORM_SETDATA,
+  params: params,
 });
 
 const formShow = title => dispatch => dispatch({
@@ -202,9 +208,10 @@ export default {
   childFormSubmit,
   action, // 以下为修改数据
   formGetMenuTree,
+  formReset,
+  formSetData,
   formShow,
   formHide,
-  formReset,
   childTableShow,
   childTableHide,
   childTableReset,

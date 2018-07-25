@@ -7,7 +7,6 @@ import ThisSearchForm from '@/components/withdraw/handleWithdraw/searchForm';
 class ContainersHandleWithdrawSearch extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     searchData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -23,7 +22,6 @@ const mapStateToProps = state => {
   const data = state.withdraw.handleWithdraw;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.table.data,
     searchData: data.table.searchData,
     loading: data.table.loading,

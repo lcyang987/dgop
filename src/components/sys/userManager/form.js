@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, Input, Row, Col, Select, Spin } from 'antd';
+import { Form, Input, Row, Col, Select } from 'antd';
 import PropTypes from 'prop-types';
 import SingleUpload from '@/components/common/SingleUpload';
 import CommonFormModal from '@/components/common/FormModal';
@@ -11,7 +11,6 @@ const Option = Select.Option;
 class ComponentsUserManagerForm extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
     formData: PropTypes.object.isRequired,
     formPicUpload: PropTypes.func.isRequired,
@@ -207,22 +206,20 @@ class ComponentsUserManagerForm extends Component {
               </FormItem>
             </Col>
             <Col span={12}>
-              <Spin spinning={this.props.dictLoading}>
-                <FormItem label={'在职状态'} {...formItemLayout}>
-                  {getFieldDecorator('workStatus', {
-                    rules: [{
-                      required: true,
-                      message: '请选择在职状态!',
-                    }],
-                  })(
-                    <Select>
-                      {
-                        this.props.dictData.workStatus.map(t => <Option key={t.value} value={t.value}>{t.name}</Option>)
-                      }
-                    </Select>
-                  )}
-                </FormItem>
-              </Spin>
+              <FormItem label={'在职状态'} {...formItemLayout}>
+                {getFieldDecorator('workStatus', {
+                  rules: [{
+                    required: true,
+                    message: '请选择在职状态!',
+                  }],
+                })(
+                  <Select>
+                    {
+                      Object.entries(this.props.dictData.workStatus).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
+                    }
+                  </Select>
+                )}
+              </FormItem>
             </Col>
             <Col span={12}>
               <FormItem label={'微信'} {...formItemLayout}>

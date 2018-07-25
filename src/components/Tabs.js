@@ -18,6 +18,8 @@ import AcceptWithdrawApply from '@/components/withdraw/acceptWithdrawApply';
 import CollectWithdrawApply from '@/components/withdraw/collectWithdrawApply';
 import HandleWithdraw from '@/components/withdraw/handleWithdraw';
 import JobDemandManager from '@/containers/jobDemandManager';
+import Revenue from '@/components/revenue';
+import Order from '@/components/order';
 
 class ComponentsTabs extends Component {
   static components = {
@@ -37,6 +39,8 @@ class ComponentsTabs extends Component {
     CollectWithdrawApply,
     HandleWithdraw,
     JobDemandManager,
+    Revenue,
+    Order,
   }
   static propTypes = {
     tabs: PropTypes.array.isRequired,

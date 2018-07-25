@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Popconfirm, Button, Divider, Tooltip } from 'antd';
+import { Popconfirm, Button, Divider, Tooltip, Icon } from 'antd';
 import PagesExpandedRowTable from '@/components/common/PagesExpandedRowTable';
 import SingleTable from '@/components/common/SingleTable';
 
@@ -52,27 +52,28 @@ class ComponentsHandleWithdrawTable extends Component {
       }];
       if (record.status === 'PENDING') {
         columns.push({
-          title: '操作',
+          title: '处理结果',
           render: (text, record) => (
             <div>
               {
                 record.isCompleted ?
-                  <Popconfirm
-                    title="确认重新选择?"
-                    onConfirm={this.props.setReset.bind(this, record)}
-                  >
-                    <a>重新选择</a>
-                  </Popconfirm> :
-                  <span>
-                    <Popconfirm
-                      title="确认成功?"
-                      onConfirm={this.props.setSuccess.bind(this, record)}
+                  <React.Fragment>
+                    {
+                      record.success ? <Icon type="check-circle-o" /> : <Icon type="close-circle" />
+                    }
+                    < Popconfirm
+                      title="确认重新选?"
+                      onConfirm={this.props.setReset.bind(this, record)}
                     >
-                      <a>成功</a>
+                      <Divider type="vertical" />
+                      <a>重新选</a>
                     </Popconfirm>
+                  </React.Fragment> :
+                  <React.Fragment>
+                    <a onClick={this.props.setSuccess.bind(this, record)}>成功</a>
                     <Divider type="vertical" />
                     <a onClick={this.props.get.bind(this, record)}>失败</a>
-                  </span>
+                  </React.Fragment>
               }
             </div>
           )
@@ -90,12 +91,17 @@ class ComponentsHandleWithdrawTable extends Component {
                       <Tooltip placement="left" title={`还有${record.detail.data.filter(t => !t.isCompleted).length}条未处理`}>
                         <Button loading={record.detail.loading} disabled={true}>提交汇总单处理</Button>
                       </Tooltip> :
-                      <Popconfirm
-                        title="确认提交汇总单处理?"
-                        onConfirm={this.props.onHandle.bind(this, record.detail)}
-                      >
-                        <Button loading={record.detail.loading}>提交汇总单处理</Button>
-                      </Popconfirm> : ''
+                      <Tooltip placement="left" title={
+                        record.detail.data.length > 1 ?
+                          `${record.detail.data.filter(t => t.success).length}条成功, ${record.detail.data.filter(t => !t.success).length}条失败` : ''
+                      }>
+                        <Popconfirm
+                          title="确认提交汇总单处理?"
+                          onConfirm={this.props.onHandle.bind(this, record.detail)}
+                        >
+                          <Button loading={record.detail.loading}>提交汇总单处理</Button>
+                        </Popconfirm>
+                      </Tooltip> : ''
                 }
                 <Popconfirm
                   title="确认刷新?"
@@ -141,7 +147,7 @@ class ComponentsHandleWithdrawTable extends Component {
     }, {
       title: '处理单状态',
       dataIndex: 'status',
-      render: text => this.props.dictData.handleWithDrawStatus.find(t => t.value === text).name,
+      render: text => this.props.dictData.handleWithDrawStatus[text],
     }, {
       title: '处理人姓名',
       dataIndex: 'handleUserName',
@@ -153,7 +159,7 @@ class ComponentsHandleWithdrawTable extends Component {
       render: (text, record) => (
         <span>
           {
-            record.status === 'PENDING' ? 
+            record.status === 'PENDING' ?
               <Popconfirm
                 title="确认撤销?"
                 onConfirm={this.props.onCancel.bind(this, record)}

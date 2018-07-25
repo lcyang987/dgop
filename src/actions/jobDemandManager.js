@@ -30,13 +30,17 @@ const thunk = {
   },
 };
 
-const tableGet = params => dispatch => dispatch({
-  [APIS.JOBDEMAND_MANAGER_TABLE_GET_API]: {
-    types: Object.values(thunk.tableGet),
-    url: 'demand/jobDemandListPage.json',
-    params: params,
-  }
-});
+const tableGet = params => dispatch => {
+  dispatch({ type: action.DEMANDDETAIL_TABLE_HIDE });
+  dispatch({ type: action.TASKCLAIM_TABLE_HIDE });
+  dispatch({
+    [APIS.JOBDEMAND_MANAGER_TABLE_GET_API]: {
+      types: Object.values(thunk.tableGet),
+      url: 'demand/jobDemandListPage.json',
+      params: params,
+    }
+  });
+};
 
 const demandDetailTableGet = params => dispatch => dispatch({
   [APIS.JOBDEMAND_MANAGER_DEMANDDETAIL_TABLE_GET_API]: {

@@ -129,6 +129,11 @@ const form = (state = formInitState, action) => {
         ...state,
         data: formInitState.data,
       }
+    case actionTypes.FORM_SETDATA:
+      return {
+        ...state,
+        data: action.params,
+      }
     case actionTypes.FORM_SHOW:
       return {
         ...state,

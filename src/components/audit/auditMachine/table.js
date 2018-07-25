@@ -7,7 +7,6 @@ import SingleTable from '@/components/common/SingleTable';
 class ComponentsAuditMachineTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     get: PropTypes.func.isRequired,
     success: PropTypes.func.isRequired,
     show: PropTypes.func.isRequired,
@@ -17,7 +16,7 @@ class ComponentsAuditMachineTable extends Component {
       const columns = [{
         title: '审核结果',
         dataIndex: 'auditResult',
-        render: text => this.props.dictData.auditResult.find(t => t.value === text).name,
+        render: text => this.props.dictData.auditResult[text],
       }, {
         title: '审核人',
         dataIndex: 'auditUserName',
@@ -28,7 +27,7 @@ class ComponentsAuditMachineTable extends Component {
         title: '备注',
         dataIndex: 'comment',
       }];
-      return <SingleTable columns={columns} table={record.auditHistoryList || []} loading={this.props.dictLoading} defaultExpandAllRows={false} />;
+      return <SingleTable columns={columns} table={record.auditHistoryList || []} loading={false} defaultExpandAllRows={false} />;
     };
     let columns = [{
       title: '农机图片',

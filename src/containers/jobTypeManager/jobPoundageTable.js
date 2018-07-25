@@ -50,11 +50,15 @@ class ContainersJobTypeManagerJobPoundageTable extends Component {
     editData.splice(index, 1);
     this.transData(editData);
   }
-  save(form, record) {
+  save(form, record, max, index) {
     form.validateFields((error, row) => {
       if (!error) {
         let editData = [...this.props.table];
-        editData = editData.map(t => t.id === record.id ? { ...t, validate: true, ...row } : t);
+        editData[index] = {
+          ...row,
+          jobQuantityMax: row.jobQuantityMax > max ? max : row.jobQuantityMax,
+          validate: true,
+        }
         this.transData(editData);
         form.resetFields(); // 必须重置，不然initalValue无法更改编辑过后显示的值
       } else {

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { JOBDEMAND_MANAGER } from '@/actions';
-import ThisSearchForm from '@/components/jobDemandManager/searchForm';
+import { REVENUE } from '@/actions';
+import ThisSearchForm from '@/components/revenue/searchForm';
 
-class ContainersJobDemandManagerSearch extends Component {
+class ContainersRevenueSearch extends Component {
   static propTypes = {
-    dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
     searchData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -18,20 +17,18 @@ class ContainersJobDemandManagerSearch extends Component {
 };
 
 const mapStateToProps = state => {
-  const dict = state.dict;
-  const data = state.jobDemandManager;
+  const data = state.revenue;
   return {
-    dictData: dict.data,
     table: data.table.data,
     searchData: data.table.searchData,
     loading: data.table.loading,
   }
-}
+};
 
-const methods = JOBDEMAND_MANAGER;
+const methods = REVENUE;
 
 const mapDispatchToProps = {
   tableGet: methods.tableGet,
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContainersJobDemandManagerSearch)
+export default connect(mapStateToProps, mapDispatchToProps)(ContainersRevenueSearch)

@@ -12,6 +12,8 @@ import machineManager from './machineManager';
 import jobTypeManager from './jobTypeManager';
 import withdraw from './withdraw';
 import jobDemandManager from './jobDemandManager';
+import revenue from './revenue';
+import order from './order';
 
 export const LOGIN = login;
 export const DICT = dict;
@@ -34,3 +36,5 @@ export const ACCEPT_WITHDRAW_APPLY = withdraw.acceptWithdrawApply;
 export const COLLECT_WITHDRAW_APPLY = withdraw.collectWithdrawApply;
 export const HANDLE_WITHDRAW = withdraw.handleWithdraw;
 export const JOBDEMAND_MANAGER = jobDemandManager;
+export const REVENUE = revenue;
+export const ORDER = order;

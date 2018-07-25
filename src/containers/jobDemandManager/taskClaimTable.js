@@ -7,7 +7,6 @@ import ThisTable from '@/components/jobDemandManager/taskClaimTable';
 class ContainersMachineManagerTaskClaimTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     searchData: PropTypes.object.isRequired,
@@ -39,7 +38,6 @@ const mapStateToProps = state => {
   const data = state.jobDemandManager;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.taskClaimTable.data,
     loading: data.taskClaimTable.loading,
     searchData: data.taskClaimTable.searchData,

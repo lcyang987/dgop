@@ -7,7 +7,6 @@ import ThisTable from '@/components/jobDemandManager/table';
 class ContainersJobDemandManagerTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     count: PropTypes.number.isRequired,
     searchData: PropTypes.object.isRequired,
@@ -45,7 +44,6 @@ const mapStateToProps = state => {
   const data = state.jobDemandManager;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.table.data,
     count: data.table.count,
     searchData: data.table.searchData,

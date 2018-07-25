@@ -14,11 +14,11 @@ const EditableRow = ({ form, index, ...props }) => (
 const EditableFormRow = Form.create()(EditableRow);
 
 class EditableCell extends React.Component {
-  getInput = (form, record, save, max) => {
+  getInput = (form, record, save, max, index) => {
     if (this.props.inputType === "number") {
-      return <InputNumber onBlur={() => save(form, record)} min={0} max={max} />;
+      return <InputNumber onChange={() => setTimeout(() => save(form, record, max, index), 0)} min={0} max={max} />;
     }
-    return <Input onBlur={() => save(form, record)} />;
+    return <Input onBlur={() => save(form, record, max, index)} min={0} max={max} />;
   };
   render() {
     const {
@@ -44,7 +44,7 @@ class EditableCell extends React.Component {
                   {getFieldDecorator(dataIndex, {
                     rules,
                     initialValue: record[dataIndex],
-                  })(this.getInput(form, record, save, max))}
+                  })(this.getInput(form, record, save, max, index))}
                 </FormItem>
               ) : (
                   restProps.children
@@ -79,6 +79,7 @@ class EditableTable extends React.Component {
             dataIndex: col.dataIndex,
             title: col.title,
             rules: col.rules,
+            index: index,
             save: this.props.save,
             max: this.props.max - (this.props.table.length - index) + 1,
             editing: this.props.editAble && (index !== this.props.table.length - 1 || col.dataIndex !== 'jobQuantityMax'),
@@ -154,10 +155,10 @@ class ComponentsJobTypeManagerJobPoundageTable extends Component {
     if (this.props.editAble) {
       columns.push({
         title: '操作',
-        render: (text, record) => {
+        render: (text, record, index) => {
           return (
             <span>
-              <a onClick={() => this.props.add(record)}>新增</a>
+              <a onClick={() => this.props.add(record)} disabled={this.props.max - (this.props.table.length - index) <= record.jobQuantityMin}>新增</a>
               {
                 this.props.table.length > 1 ?
                   <React.Fragment>

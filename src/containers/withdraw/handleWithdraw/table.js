@@ -7,7 +7,6 @@ import ThisTable from '@/components/withdraw/handleWithdraw/table';
 class ContainersHandleWithdrawTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     count: PropTypes.number.isRequired,
     searchData: PropTypes.object.isRequired,
@@ -70,7 +69,6 @@ const mapStateToProps = state => {
   const data = state.withdraw.handleWithdraw;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.table.data,
     count: data.table.count,
     searchData: data.table.searchData,

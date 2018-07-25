@@ -12,6 +12,8 @@ import machineManager from './machineManager';
 import jobTypeManager from './jobTypeManager';
 import withdraw from './withdraw';
 import jobDemandManager from './jobDemandManager';
+import revenue from './revenue';
+import order from './order';
 
 export default combineReducers({
   login,
@@ -27,4 +29,6 @@ export default combineReducers({
   jobTypeManager,
   withdraw,
   jobDemandManager,
+  revenue,
+  order,
 });

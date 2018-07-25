@@ -60,7 +60,7 @@ class ComponentsMachineManagerDemandDetailTable extends Component {
         </span>
       ),
     }]
-    return <SingleTable columns={columns} {...this.props} />
+    return <SingleTable columns={columns} table={this.props.table.filter(t => t.id === this.props.taskClaimTableSearchData.id)}  {...this.props} />
   }
 };
 

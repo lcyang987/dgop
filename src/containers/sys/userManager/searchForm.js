@@ -6,6 +6,7 @@ import ThisSearchForm from '@/components/sys/userManager/searchForm';
 
 class ContainersUserManagerSearch extends Component {
   static propTypes = {
+    dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
     searchData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -17,8 +18,10 @@ class ContainersUserManagerSearch extends Component {
 };
 
 const mapStateToProps = state => {
+  const dict = state.dict;
   const data = state.sys.userManager;
   return {
+    dictData: dict.data,
     table: data.table.data,
     searchData: data.table.searchData,
     loading: data.table.loading,

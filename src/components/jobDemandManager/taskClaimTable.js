@@ -6,7 +6,6 @@ import SingleTable from '@/components/common/SingleTable';
 class ComponentsMachineManagerTaskClaimTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     frozen: PropTypes.func.isRequired,
     unfrozen: PropTypes.func.isRequired,
@@ -44,14 +43,14 @@ class ComponentsMachineManagerTaskClaimTable extends Component {
       align: 'right',
       render: text => `￥${text}`,
     }, {
-      title: '状态',
-      dataIndex: 'status',
-      render: text => this.props.dictData.jobDemandManager_taskStatus.find(t => t.value === text).name,
-    }, {
       title: '机手质量保证金余额',
       dataIndex: 'qualityDepositAmount',
       align: 'right',
       render: text => `￥${text}`,
+    }, {
+      title: '状态',
+      dataIndex: 'status',
+      render: text => this.props.dictData.jobDemandManager_taskStatus[text],
     }, {
       title: '报酬结算详情',
       dataIndex: 'jobRewardSettlement',
@@ -63,10 +62,10 @@ class ComponentsMachineManagerTaskClaimTable extends Component {
                 <div>
                   <p>结算单号: {text.settlementNo}</p>
                   <p>单价: ￥{text.unitPrice}</p>
-                  <p>状态: {this.props.dictData.jobDemandManager_rewardStatus.find(t => t.value === text.status).name}</p>
-                  <p>是否支付: {this.props.dictData.yorn.find(t => t.value === text.isPay).name}</p>
+                  <p>状态: {this.props.dictData.jobDemandManager_rewardStatus[text.status]}</p>
+                  <p>是否支付: {this.props.dictData.yorn[text.isPay]}</p>
                   <p>支付时间: {text.payTime}</p>
-                  <p>是否结算: {this.props.dictData.yorn.find(t => t.value === text.isSettle).name}</p>
+                  <p>是否结算: {this.props.dictData.yorn[text.isSettle]}</p>
                   <p>结算时间: {text.settleTime}</p>
                   <p>备注: {text.comment}</p>
                 </div>

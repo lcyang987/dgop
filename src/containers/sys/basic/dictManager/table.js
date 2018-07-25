@@ -13,11 +13,11 @@ class ContainersDictManagerTable extends Component {
     tableGet: PropTypes.func.isRequired,
     formGetMenuTree: PropTypes.func.isRequired,
     formReset: PropTypes.func.isRequired,
+    formSetData: PropTypes.func.isRequired,
     formGet: PropTypes.func.isRequired,
     formShow: PropTypes.func.isRequired,
     childTableGet: PropTypes.func.isRequired,
     childTableShow: PropTypes.func.isRequired,
-    childFormSetData: PropTypes.func.isRequired,
   }
   componentWillMount() {
     this.props.tableGet();
@@ -35,10 +35,18 @@ class ContainersDictManagerTable extends Component {
     this.props.childTableReset();
     this.props.childTableShow();
     this.props.childTableGet({ codeType: record.typeValue });
-    // this.props.childFormSetData({ codeType: record.typeValue });
+  }
+  addChild(record) {
+    this.props.formGetMenuTree({
+      originTree: this.props.table,
+      formId: -1,
+    });
+    this.props.formReset();
+    this.props.formShow(`新增字典菜单`);
+    this.props.formSetData({ pid: '' + record.id });
   }
   render() {
-    return <ThisTable {...this.props} get={this.get} read={this.read} />
+    return <ThisTable {...this.props} get={this.get} read={this.read} addChild={this.addChild} />
   }
 };
 
@@ -58,12 +66,12 @@ const mapDispatchToProps = {
   tableGet: methods.tableGet,
   formGetMenuTree: methods.formGetMenuTree,
   formReset: methods.formReset,
+  formSetData: methods.formSetData,
   formGet: methods.formGet,
   formShow: methods.formShow,
   childTableReset: methods.childTableReset,
   childTableGet: methods.childTableGet,
   childTableShow: methods.childTableShow,
-  childFormSetData: methods.childFormSetData,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContainersDictManagerTable);

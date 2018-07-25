@@ -10,7 +10,6 @@ const confirm = Modal.confirm;
 class ContainersAuditJobDemandTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     searchData: PropTypes.object.isRequired,
     count: PropTypes.number.isRequired,
@@ -63,7 +62,6 @@ const mapStateToProps = state => {
   const data = state.audit.auditJobDemand;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.table.data,
     searchData: data.table.searchData,
     count: data.table.count,

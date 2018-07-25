@@ -6,6 +6,7 @@ import ThisForm from '@/components/sys/menuManager/form';
 
 class ContainersMenuManagerForm extends Component {
   static propTypes = {
+    dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
     visible: PropTypes.bool.isRequired,
     loading: PropTypes.bool.isRequired,
@@ -39,8 +40,10 @@ class ContainersMenuManagerForm extends Component {
 };
 
 const mapStateToProps = state => {
+  const dict = state.dict;
   const data = state.sys.menuManager;
   return {
+    dictData: dict.data,
     table: data.table.data,
     visible: data.form.visible,
     loading: data.form.loading,

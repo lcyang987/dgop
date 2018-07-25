@@ -15,11 +15,11 @@ class ComponentsCollectWithdrawApplyBtns extends Component {
           onConfirm={this.props.apply.bind(this, JSON.stringify(this.props.batchApply))}
         >
           <Button disabled={!this.props.batchApply.length}>批量汇总</Button>
-          {
-            !this.props.batchApply.length ? '' :
-            ` 已选中${this.props.batchApply.length}个`
-          }
         </Popconfirm>
+        {
+          this.props.batchApply.length ?
+            ` 已选中${this.props.batchApply.length}个` : ''
+        }
       </div>
     )
   }

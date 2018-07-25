@@ -7,7 +7,6 @@ import { MACHINE_MANAGER } from '@/actions';
 class ContainersMachineManagerBrandBtns extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
-    dictLoading: PropTypes.bool.isRequired,
     table: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     searchData: PropTypes.object.isRequired,
@@ -24,7 +23,7 @@ class ContainersMachineManagerBrandBtns extends Component {
     this.props.show('新增品牌');
   }
   render() {
-    const BRANDFilter = this.props.dictData.BRAND.filter(t => !this.props.table.map(t => t.code).includes(t.value));
+    const BRANDFilter = Object.entries(this.props.dictData.BRAND).filter(v => !this.props.table.map(t => t.code).includes(v[0]));
     return (
       <div style={{ margin: 6 }}>
         <Button onClick={this.onClick.bind(this)} loading={this.props.loading || this.props.table.some(t => t.loading)} disabled={!BRANDFilter.length}>{BRANDFilter.length ? '新增品牌' : '品牌已用完'}</Button>
@@ -40,7 +39,6 @@ const mapStateToProps = state => {
   const data = state.machineManager;
   return {
     dictData: dict.data,
-    dictLoading: dict.loading,
     table: data.brandTable.data,
     loading: data.brandTable.loading,
     searchData: data.brandTable.searchData,

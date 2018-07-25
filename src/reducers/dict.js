@@ -18,13 +18,10 @@ export default (state = dictInitState, action) => {
       const dictData = {};
       const filterResult = action.response.result.filter(item => item.status === 'y');
       filterResult.forEach(item => {
-        dictData[item.codeType] = [];
+        dictData[item.codeType] = {};
       });
       filterResult.forEach(item => {
-        dictData[item.codeType].push({
-          name: item.codeName,
-          value: item.codeValue,
-        });
+        dictData[item.codeType][item.codeValue] = item.codeName;
       });
       return {
         ...state,

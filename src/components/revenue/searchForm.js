@@ -1,34 +1,31 @@
 import React, { Component } from 'react';
-import { Form, Select } from 'antd';
+import { Form, Input } from 'antd';
 import PropTypes from 'prop-types';
 import CommonSearchForm from '@/components/common/SearchForm';
 
 const FormItem = Form.Item;
-const { Option } = Select;
 
-class ComponentsHandleWithdrawSearchForm extends Component {
+class ComponentsRevenueSearchForm extends Component {
   static propTypes = {
-    dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
-    tableGet: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
     searchData: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
+    tableGet: PropTypes.func.isRequired,
   }
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <CommonSearchForm {...this.props} loading={this.props.loading || this.props.table.some(t => t.loading)}>
-        <div style={{ display: 'inline-block' }}>
-          <FormItem label={'状态'}>
-            {getFieldDecorator('status')(
-              <Select style={{ minWidth: 72 }}>
-                {
-                  [['', '所有']].concat(Object.entries(this.props.dictData.handleWithDrawStatus)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
-                }
-              </Select>
-            )}
-          </FormItem>
-        </div>
+        <FormItem label={'用户姓名'}>
+          {getFieldDecorator('memberName', {
+            rules: [{
+              max: 20,
+              message: '不能超过20个字'
+            }],
+          })(
+            <Input placeholder={'例如：王五'} />
+          )}
+        </FormItem>
       </CommonSearchForm>
     )
   }
@@ -44,4 +41,4 @@ export default Form.create({
     }
     return values;
   }
-})(ComponentsHandleWithdrawSearchForm);
+})(ComponentsRevenueSearchForm);
