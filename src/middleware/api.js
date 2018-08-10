@@ -9,11 +9,14 @@ const ajax = (url, params) => {
   }
   formData = formData.slice(0, -1)
   // console.log('formData', formData)
+  var extra = {
+    body: formData || {}
+  }
   return fetch(fullUrl, {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     credentials: "include",
     method: params ? 'POST' : 'GET',
-    body: formData || {}
+    ...extra
   }).then(response =>
     response.json().then(json => {
       if (!json.success) {
