@@ -22,7 +22,7 @@ const mapStateToProps = state => {
   const dict = state.dict;
   const data = state.order;
   return {
-    dictData: state.dict.data,
+    dictData: dict.data,
     table: data.table.data,
     searchData: data.table.searchData,
     count: data.table.count,
