@@ -57,7 +57,7 @@ class ContainersHandleWithdrawTable extends Component {
       version: record.version,
     }).then(() => {
       this.props.tableGet(this.props.searchData);
-    })
+    });
   }
   render() {
     return <ThisTable {...this.props} onExpand={this.onExpand.bind(this)} get={this.get} onCancel={this.onCancel} onHandle={this.onHandle} />
