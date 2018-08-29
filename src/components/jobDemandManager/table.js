@@ -10,7 +10,9 @@ class ComponentsJobDemandManagerTable extends Component {
     demandDetailTableVisible: PropTypes.bool.isRequired,
     demandDetailTableSearchData: PropTypes.object.isRequired,
     get: PropTypes.func.isRequired,
+    hide: PropTypes.func.isRequired,
     demandDetailTableHide: PropTypes.func.isRequired,
+    showMap: PropTypes.func.isRequired,
   }
   render() {
     let columns = [{

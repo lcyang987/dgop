@@ -128,7 +128,7 @@ const carousel = (state = carouselInitState, action) => {
     case actionTypes.CAROUSEL_RESET:
       return {
         ...state,
-        data: formInitState.data
+        data: carouselInitState.data
       }
     case actionTypes.CAROUSEL_SETDATA:
       return {

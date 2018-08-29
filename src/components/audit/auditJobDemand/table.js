@@ -81,6 +81,7 @@ class ComponentsAuditJobDemandTable extends Component {
       dataIndex: 'totalQuantity',
     }, {
       title: '操作',
+      fixed: 'right',
       render: (text, record) => (
         <span>
           <a onClick={this.props.success.bind(this, record)}>审核通过</a>

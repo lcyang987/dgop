@@ -125,32 +125,76 @@ const taskClaimTable = (state = taskClaimTableInitState, action) => {
         ...state,
         visible: false
       }
-    case thunkTypes.taskClaimTableFrozen.REQUESTTYPE:
+    default:
+      return state
+  }
+};
+
+const jobRewardTableInitState = {
+  data: [],
+  visible: false,
+  loading: false,
+  searchData: {},
+};
+
+const jobRewardTable = (state = jobRewardTableInitState, action) => {
+  switch (action.type) {
+    case thunkTypes.jobRewardTableGet.REQUESTTYPE:
+      return {
+        ...state,
+        searchData: {
+          ...state.searchData,
+          ...action.params,
+        },
+        loading: true,
+      }
+    case thunkTypes.jobRewardTableGet.SUCCESSTYPE:
+      return {
+        ...state,
+        data: action.response.result,
+        loading: false
+      }
+    case thunkTypes.jobRewardTableGet.FAILURETYPE:
+      return {
+        ...state,
+        loading: false,
+      }
+    case actionTypes.JOBREWARD_TABLE_SHOW:
+      return {
+        ...state,
+        visible: true
+      }
+    case actionTypes.JOBREWARD_TABLE_HIDE:
+      return {
+        ...state,
+        visible: false
+      }
+    case thunkTypes.jobRewardTableFrozen.REQUESTTYPE:
       return {
         ...state,
         loading: true,
       }
-    case thunkTypes.taskClaimTableFrozen.SUCCESSTYPE:
+    case thunkTypes.jobRewardTableFrozen.SUCCESSTYPE:
       return {
         ...state,
         loading: false,
       }
-    case thunkTypes.taskClaimTableFrozen.FAILURETYPE:
+    case thunkTypes.jobRewardTableFrozen.FAILURETYPE:
       return {
         ...state,
         loading: false,
       }
-    case thunkTypes.taskClaimTableUnfrozen.REQUESTTYPE:
+    case thunkTypes.jobRewardTableUnfrozen.REQUESTTYPE:
       return {
         ...state,
         loading: true,
       }
-    case thunkTypes.taskClaimTableUnfrozen.SUCCESSTYPE:
+    case thunkTypes.jobRewardTableUnfrozen.SUCCESSTYPE:
       return {
         ...state,
         loading: false,
       }
-    case thunkTypes.taskClaimTableUnfrozen.FAILURETYPE:
+    case thunkTypes.jobRewardTableUnfrozen.FAILURETYPE:
       return {
         ...state,
         loading: false,
@@ -198,5 +242,6 @@ export default combineReducers({
   table,
   demandDetailTable,
   taskClaimTable,
+  jobRewardTable,
   map,
 });

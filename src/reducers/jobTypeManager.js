@@ -212,7 +212,7 @@ const machineForm = (state = machineFormInitState, action) => {
     case actionTypes.MACHINEFORM_RESET:
       return {
         ...state,
-        data: formInitState.data,
+        data: machineFormInitState.data,
       }
     case actionTypes.MACHINEFORM_SHOW:
       return {

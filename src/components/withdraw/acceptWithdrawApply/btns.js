@@ -9,7 +9,7 @@ class ComponentsAcceptWithdrawApplyBtns extends Component {
   }
   render() {
     return (
-      <div style={{ margin: 6 }}>
+      <div style={{ margin: '8px 0 10px 6px' }}>
         <Popconfirm
           title="确认批量受理?"
           onConfirm={this.props.apply.bind(this, JSON.stringify(this.props.batchApply))}

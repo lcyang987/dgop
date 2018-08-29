@@ -8,7 +8,7 @@ class ComponentsMachineManagerDemandDetailTable extends Component {
     taskClaimTableVisible: PropTypes.bool.isRequired,
     taskClaimTableSearchData: PropTypes.object.isRequired,
     get: PropTypes.func.isRequired,
-    taskClaimTableHide: PropTypes.func.isRequired,
+    hide: PropTypes.func.isRequired,
   }
   render() {
     let columns = [{
@@ -54,7 +54,7 @@ class ComponentsMachineManagerDemandDetailTable extends Component {
         <span>
         {
           this.props.taskClaimTableVisible ?
-            <a onClick={this.props.taskClaimTableHide}>关闭接单列表</a> :
+            <a onClick={this.props.hide.bind(this)}>关闭接单列表</a> :
             <a onClick={this.props.get.bind(this, record)}>查看接单列表</a>
         }
         </span>

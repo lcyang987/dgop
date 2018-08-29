@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Popover, Popconfirm } from 'antd';
 import PropTypes from 'prop-types';
 import SingleTable from '@/components/common/SingleTable';
 
@@ -7,8 +6,10 @@ class ComponentsMachineManagerTaskClaimTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
-    frozen: PropTypes.func.isRequired,
-    unfrozen: PropTypes.func.isRequired,
+    jobRewardTableVisible: PropTypes.bool.isRequired,
+    jobRewardTableSearchData: PropTypes.object.isRequired,
+    get: PropTypes.func.isRequired,
+    jobRewardTableHide: PropTypes.func.isRequired,
   }
   render() {
     let columns = [{
@@ -52,50 +53,13 @@ class ComponentsMachineManagerTaskClaimTable extends Component {
       dataIndex: 'status',
       render: text => this.props.dictData.jobDemandManager_taskStatus[text],
     }, {
-      title: '报酬结算详情',
-      dataIndex: 'jobRewardSettlement',
-      render: text => (
-        <React.Fragment>
-          {
-            text ?
-              <Popover placement="bottom" title={`报酬结算详情`} trigger="click" content={(
-                <div>
-                  <p>结算单号: {text.settlementNo}</p>
-                  <p>单价: ￥{text.unitPrice}</p>
-                  <p>状态: {this.props.dictData.jobDemandManager_rewardStatus[text.status]}</p>
-                  <p>是否支付: {this.props.dictData.yorn[text.isPay]}</p>
-                  <p>支付时间: {text.payTime}</p>
-                  <p>是否结算: {this.props.dictData.yorn[text.isSettle]}</p>
-                  <p>结算时间: {text.settleTime}</p>
-                  <p>备注: {text.comment}</p>
-                </div>
-              )}>
-                <a>查看</a>
-              </Popover> : ''
-          }
-        </React.Fragment>
-      ),
-    }, {
       title: '操作',
       render: (text, record) => (
         <span>
           {
-            record.jobRewardSettlement && (record.jobRewardSettlement.status === 'PAID' || record.jobRewardSettlement.status === 'UNFROZEN') ?
-              <Popconfirm
-                title="确认冻结?"
-                onConfirm={this.props.frozen.bind(this, record)}
-              >
-                <a>冻结</a>
-              </Popconfirm> : ''
-          }
-          {
-            record.jobRewardSettlement && record.jobRewardSettlement.status === 'FROZEN' ?
-              <Popconfirm
-                title="确认解冻?"
-                onConfirm={this.props.unfrozen.bind(this, record)}
-              >
-                <a>解冻</a>
-              </Popconfirm> : ''
+            this.props.jobRewardTableVisible ?
+              <a onClick={this.props.jobRewardTableHide}>关闭结算单列表</a> :
+              <a onClick={this.props.get.bind(this, record)}>查看结算单列表</a>
           }
         </span>
       ),

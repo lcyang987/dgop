@@ -7,6 +7,7 @@ import ThisSearchForm from '@/containers/jobDemandManager/searchForm';
 import ThisTable from '@/containers/jobDemandManager/table';
 import ThisDemandDetailTable from '@/containers/jobDemandManager/demandDetailTable';
 import ThisTaskClaimTable from '@/containers/jobDemandManager/taskClaimTable';
+import ThisJobRewardTable from '@/containers/jobDemandManager/jobRewardTable';
 import CommonMap from '@/components/common/Map';
 
 class ComponentsJobDemandManager extends Component {
@@ -34,6 +35,13 @@ class ComponentsJobDemandManager extends Component {
                   <React.Fragment>
                     <Divider style={{ margin: 0 }} />
                     <ThisTaskClaimTable />
+                    {
+                      this.props.jobRewardTableVisible ?
+                        <React.Fragment>
+                          <Divider style={{ margin: 0 }} />
+                          <ThisJobRewardTable />
+                        </React.Fragment> : ''
+                    }
                   </React.Fragment> : ''
               }
             </React.Fragment> : ''
@@ -49,6 +57,7 @@ const mapStateToProps = state => {
   return {
     demandDetailTableVisible: data.demandDetailTable.visible,
     taskClaimTableVisible: data.taskClaimTable.visible,
+    jobRewardTableVisible: data.jobRewardTable.visible,
     data: data.map.data,
     visible: data.map.visible,
     title: data.map.title,

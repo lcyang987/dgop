@@ -10,26 +10,19 @@ class ContainersMachineManagerTaskClaimTable extends Component {
     table: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
     searchData: PropTypes.object.isRequired,
+    jobRewardTableVisible: PropTypes.bool.isRequired,
+    jobRewardTableSearchData: PropTypes.object.isRequired,
     tableGet: PropTypes.func.isRequired,
-    tableFrozen: PropTypes.func.isRequired,
-    tableUnfrozen: PropTypes.func.isRequired,
+    jobRewardTableGet: PropTypes.func.isRequired,
+    jobRewardTableShow: PropTypes.func.isRequired,
+    jobRewardTableHide: PropTypes.func.isRequired,
   }
-  frozen(record) {
-    this.props.tableFrozen({
-      id: record.jobRewardSettlement.id
-    }).then(() => {
-      this.props.tableGet(this.props.searchData)
-    })
-  }
-  unfrozen(record) {
-    this.props.tableUnfrozen({
-      id: record.jobRewardSettlement.id
-    }).then(() => {
-      this.props.tableGet(this.props.searchData)
-    })
+  get(record) {
+    this.props.jobRewardTableShow();
+    this.props.jobRewardTableGet({ id: record.id });
   }
   render() {
-    return <ThisTable {...this.props} frozen={this.frozen} unfrozen={this.unfrozen} />
+    return <ThisTable {...this.props} get={this.get} />
   }
 };
 
@@ -41,6 +34,8 @@ const mapStateToProps = state => {
     table: data.taskClaimTable.data,
     loading: data.taskClaimTable.loading,
     searchData: data.taskClaimTable.searchData,
+    jobRewardTableVisible: data.jobRewardTable.visible,
+    jobRewardTableSearchData: data.jobRewardTable.searchData,
   }
 }
 
@@ -48,8 +43,9 @@ const methods = JOBDEMAND_MANAGER;
 
 const mapDispatchToProps = {
   tableGet: methods.taskClaimTableGet,
-  tableFrozen: methods.taskClaimTableFrozen,
-  tableUnfrozen: methods.taskClaimTableUnfrozen,
+  jobRewardTableGet: methods.jobRewardTableGet,
+  jobRewardTableShow: methods.jobRewardTableShow,
+  jobRewardTableHide: methods.jobRewardTableHide,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContainersMachineManagerTaskClaimTable);

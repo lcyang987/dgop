@@ -224,7 +224,7 @@ const brandForm = (state = brandFormInitState, action) => {
     case actionTypes.BRANDFORM_RESET:
       return {
         ...state,
-        data: formInitState.data,
+        data: brandFormInitState.data,
       }
     case actionTypes.BRANDFORM_SHOW:
       return {
@@ -327,7 +327,7 @@ const componentForm = (state = componentFormInitState, action) => {
     case actionTypes.COMPONENTFORM_RESET:
       return {
         ...state,
-        data: formInitState.data,
+        data: componentFormInitState.data,
       }
     case actionTypes.COMPONENTFORM_SHOW:
       return {
@@ -430,7 +430,7 @@ const modelForm = (state = modelFormInitState, action) => {
     case actionTypes.MODELFORM_RESET:
       return {
         ...state,
-        data: formInitState.data,
+        data: modelFormInitState.data,
       }
     case actionTypes.MODELFORM_SHOW:
       return {

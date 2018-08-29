@@ -36,7 +36,7 @@ class ContainersJobTypeManagerJobPoundageBtns extends Component {
   }
   render() {
     return (
-      <div style={{ margin: 6 }}>
+      <div style={{ margin: '8px 0 10px 6px' }}>
         {
           this.props.editAble ?
             <React.Fragment>

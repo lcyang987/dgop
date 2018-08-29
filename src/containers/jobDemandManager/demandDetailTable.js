@@ -15,13 +15,18 @@ class ContainersMachineManagerDemandDetailTable extends Component {
     taskClaimTableGet: PropTypes.func.isRequired,
     taskClaimTableShow: PropTypes.func.isRequired,
     taskClaimTableHide: PropTypes.func.isRequired,
+    jobRewardTableHide: PropTypes.func.isRequired,
   }
   get(record) {
     this.props.taskClaimTableShow();
     this.props.taskClaimTableGet({ id: record.id, demandNo: this.props.searchData.demandNo });
   }
+  hide() {
+    this.props.taskClaimTableHide();
+    this.props.jobRewardTableHide();
+  }
   render() {
-    return <ThisTable {...this.props} get={this.get} />
+    return <ThisTable {...this.props} get={this.get} hide={this.hide} />
   }
 };
 
@@ -43,6 +48,7 @@ const mapDispatchToProps = {
   taskClaimTableGet: methods.taskClaimTableGet,
   taskClaimTableShow: methods.taskClaimTableShow,
   taskClaimTableHide: methods.taskClaimTableHide,
+  jobRewardTableHide: methods.jobRewardTableHide,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContainersMachineManagerDemandDetailTable);

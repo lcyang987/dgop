@@ -104,5 +104,5 @@
     "http-proxy-middleware": "^0.18.0",
     "jest": "^20.0.4"
   },
-  "homepage": "."
+  "homepage": "../../"
 }

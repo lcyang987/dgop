@@ -17,27 +17,28 @@ class ContainersJobTypeManager extends Component {
       <Row>
         <Col span={10}>
           <ThisSearchForm />
+          <Divider style={{ margin: 0 }} />
           <ThisBtns />
           <Divider style={{ margin: 0 }} />
           <ThisTable />
         </Col>
         <Col span={14}>
-        {
-          this.props.machineTableVisible ?
-            <Col span={23} offset={1}>
-              <ThisMachineBtns />
-              <Divider style={{ margin: 0 }} />
-              <ThisMachineTable />
-            </Col> : ''
-        }
-        {
-          this.props.jobPoundageTableVisible ?
-            <Col span={23} offset={1}>
-              <ThisJobPoundageBtns />
-              <Divider style={{ margin: 0 }} />
-              <ThisJobPoundageTable />
-            </Col> : ''
-        }
+          {
+            this.props.machineTableVisible ?
+              <Col span={23} offset={1}>
+                <ThisMachineBtns />
+                <Divider style={{ margin: 0 }} />
+                <ThisMachineTable />
+              </Col> : ''
+          }
+          {
+            this.props.jobPoundageTableVisible ?
+              <Col span={23} offset={1}>
+                <ThisJobPoundageBtns />
+                <Divider style={{ margin: 0 }} />
+                <ThisJobPoundageTable />
+              </Col> : ''
+          }
         </Col>
       </Row>
     )
@@ -52,6 +53,7 @@ class ContainersJobTypeManager extends Component {
             <Row>
               <Col span={24}>
                 <ThisSearchForm />
+                <Divider style={{ margin: 0 }} />
                 <ThisBtns />
                 <Divider style={{ margin: 0 }} />
                 <ThisTable />

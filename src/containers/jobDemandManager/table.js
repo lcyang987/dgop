@@ -17,6 +17,8 @@ class ContainersJobDemandManagerTable extends Component {
     demandDetailTableGet: PropTypes.func.isRequired,
     demandDetailTableShow: PropTypes.func.isRequired,
     demandDetailTableHide: PropTypes.func.isRequired,
+    taskClaimTableHide: PropTypes.func.isRequired,
+    jobRewardTableHide: PropTypes.func.isRequired,
     mapReset: PropTypes.func.isRequired,
     mapSetData: PropTypes.func.isRequired,
     mapShow: PropTypes.func.isRequired,
@@ -28,6 +30,7 @@ class ContainersJobDemandManagerTable extends Component {
   hide() {
     this.props.demandDetailTableHide();
     this.props.taskClaimTableHide();
+    this.props.jobRewardTableHide();
   }
   showMap(record) {
     this.props.mapReset();
@@ -61,6 +64,7 @@ const mapDispatchToProps = {
   demandDetailTableShow: methods.demandDetailTableShow,
   demandDetailTableHide: methods.demandDetailTableHide,
   taskClaimTableHide: methods.taskClaimTableHide,
+  jobRewardTableHide: methods.jobRewardTableHide,
   mapReset: methods.mapReset,
   mapSetData: methods.mapSetData,
   mapShow: methods.mapShow,

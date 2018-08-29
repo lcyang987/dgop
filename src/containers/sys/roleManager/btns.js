@@ -16,7 +16,7 @@ class ContainersRoleManagerBtns extends Component {
   }
   render() {
     return (
-      <div style={{ margin: 6 }}>
+      <div style={{ margin: '8px 0 10px 6px' }}>
         <Button onClick={this.onClick.bind(this)} loading={this.props.loading}>新增</Button>
       </div>
     )

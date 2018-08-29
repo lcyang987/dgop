@@ -25,7 +25,7 @@ class ContainersMachineManagerBrandBtns extends Component {
   render() {
     const BRANDFilter = Object.entries(this.props.dictData.BRAND).filter(v => !this.props.table.map(t => t.code).includes(v[0]));
     return (
-      <div style={{ margin: 6 }}>
+      <div style={{ margin: '8px 0 10px 6px' }}>
         <Button onClick={this.onClick.bind(this)} loading={this.props.loading || this.props.table.some(t => t.loading)} disabled={!BRANDFilter.length}>{BRANDFilter.length ? '新增品牌' : '品牌已用完'}</Button>
         <Button onClick={this.props.hide} style={{ margin: '0 6px' }} type="danger">关闭</Button>
         一 {this.props.searchData.name}

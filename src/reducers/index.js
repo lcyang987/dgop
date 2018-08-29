@@ -14,6 +14,7 @@ import withdraw from './withdraw';
 import jobDemandManager from './jobDemandManager';
 import revenue from './revenue';
 import order from './order';
+import memberManager from './memberManager';
 
 export default combineReducers({
   login,
@@ -31,4 +32,5 @@ export default combineReducers({
   jobDemandManager,
   revenue,
   order,
+  memberManager,
 });

@@ -21,35 +21,36 @@ class ContainersMachineManager extends Component {
       <Row>
         <Col span={12}>
           <ThisSearchForm />
+          <Divider style={{ margin: 0 }} />
           <ThisBtns />
           <Divider style={{ margin: 0 }} />
           <ThisTable />
         </Col>
         <Col span={12}>
-        {
-          this.props.brandTableVisible ?
-            <Col span={23} offset={1}>
-              <ThisBrandBtns />
-              <Divider style={{ margin: 0 }} />
-              <ThisBrandTable />
-            </Col> : ''
-        }
-        {
-          this.props.componentTableVisible ?
-            <Col span={23} offset={1}>
-              <ThisComponentBtns />
-              <Divider style={{ margin: 0 }} />
-              <ThisComponentTable />
-            </Col> : ''
-        }
-        {
-          this.props.modelTableVisible ?
-            <Col span={23} offset={1}>
-              <ThisModelBtns />
-              <Divider style={{ margin: 0 }} />
-              <ThisModelTable />
-            </Col> : ''
-        }
+          {
+            this.props.brandTableVisible ?
+              <Col span={23} offset={1}>
+                <ThisBrandBtns />
+                <Divider style={{ margin: 0 }} />
+                <ThisBrandTable />
+              </Col> : ''
+          }
+          {
+            this.props.componentTableVisible ?
+              <Col span={23} offset={1}>
+                <ThisComponentBtns />
+                <Divider style={{ margin: 0 }} />
+                <ThisComponentTable />
+              </Col> : ''
+          }
+          {
+            this.props.modelTableVisible ?
+              <Col span={23} offset={1}>
+                <ThisModelBtns />
+                <Divider style={{ margin: 0 }} />
+                <ThisModelTable />
+              </Col> : ''
+          }
         </Col>
       </Row>
     )
@@ -64,6 +65,7 @@ class ContainersMachineManager extends Component {
             <Row>
               <Col span={24}>
                 <ThisSearchForm />
+                <Divider style={{ margin: 0 }} />
                 <ThisBtns />
                 <Divider style={{ margin: 0 }} />
                 <ThisTable />

@@ -24,7 +24,7 @@ class ContainersJobTypeManagerMachinBtns extends Component {
   }
   render() {
     return (
-      <div style={{ margin: 6 }}>
+      <div style={{ margin: '8px 0 10px 6px' }}>
         <Button onClick={this.onClick.bind(this)} loading={this.props.loading || this.props.table.some(t => t.loading)}>新增</Button>
         <Button onClick={this.props.hide} style={{ margin: '0 6px' }} type="danger">关闭</Button>
       </div>

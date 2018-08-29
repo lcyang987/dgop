@@ -20,6 +20,7 @@ import HandleWithdraw from '@/components/withdraw/handleWithdraw';
 import JobDemandManager from '@/containers/jobDemandManager';
 import Revenue from '@/components/revenue';
 import Order from '@/components/order';
+import MemberManager from '@/containers/memberManager';
 
 class ComponentsTabs extends Component {
   static components = {
@@ -41,6 +42,7 @@ class ComponentsTabs extends Component {
     JobDemandManager,
     Revenue,
     Order,
+    MemberManager,
   }
   static propTypes = {
     tabs: PropTypes.array.isRequired,
