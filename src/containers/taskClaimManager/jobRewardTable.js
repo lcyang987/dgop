@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { JOBDEMAND_MANAGER } from '@/actions';
+import { TASKCLAIM_MANAGER } from '@/actions';
 import ThisTable from '@/components/jobDemandManager/jobRewardTable';
 
-class ContainersJobDemandManagerJobRewardTable extends Component {
+class ContainersTaskClaimManagerJobRewardTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
@@ -35,7 +35,7 @@ class ContainersJobDemandManagerJobRewardTable extends Component {
 
 const mapStateToProps = state => {
   const dict = state.dict;
-  const data = state.jobDemandManager;
+  const data = state.taskClaimManager;
   return {
     dictData: dict.data,
     table: data.jobRewardTable.data,
@@ -44,7 +44,7 @@ const mapStateToProps = state => {
   }
 }
 
-const methods = JOBDEMAND_MANAGER;
+const methods = TASKCLAIM_MANAGER;
 
 const mapDispatchToProps = {
   tableGet: methods.jobRewardTableGet,
@@ -52,4 +52,4 @@ const mapDispatchToProps = {
   tableUnfrozen: methods.jobRewardTableUnfrozen,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContainersJobDemandManagerJobRewardTable);
+export default connect(mapStateToProps, mapDispatchToProps)(ContainersTaskClaimManagerJobRewardTable);

@@ -36,8 +36,8 @@ class ComponentsMenuManagerForm extends Component {
                     required: true,
                     message: '请输入名称!',
                   }, {
-                    max: 6,
-                    message: '不能超过6个字'
+                    max: 8,
+                    message: '不能超过8个字'
                   }],
                 })(
                   <Input placeholder={'例如：菜单管理'} />

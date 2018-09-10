@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { JOBDEMAND_MANAGER } from '@/actions';
-import ThisSearchForm from '@/components/jobDemandManager/searchForm';
+import { TASKCLAIM_MANAGER } from '@/actions';
+import ThisSearchForm from '@/components/taskClaimManager/searchForm';
 
-class ContainersJobDemandManagerSearch extends Component {
+class ContainersTaskClaimManagerSearch extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
     searchData: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
     tableGet: PropTypes.func.isRequired,
-    demandDetailTableHide: PropTypes.func.isRequired,
-    taskClaimTableHide: PropTypes.func.isRequired,
     jobRewardTableHide: PropTypes.func.isRequired,
   }
   tableGet(searchData) {
     this.props.tableGet(searchData);
-    this.props.demandDetailTableHide();
-    this.props.taskClaimTableHide();
     this.props.jobRewardTableHide();
   }
   render() {
@@ -28,7 +24,7 @@ class ContainersJobDemandManagerSearch extends Component {
 
 const mapStateToProps = state => {
   const dict = state.dict;
-  const data = state.jobDemandManager;
+  const data = state.taskClaimManager;
   return {
     dictData: dict.data,
     table: data.table.data,
@@ -37,13 +33,11 @@ const mapStateToProps = state => {
   }
 }
 
-const methods = JOBDEMAND_MANAGER;
+const methods = TASKCLAIM_MANAGER;
 
 const mapDispatchToProps = {
   tableGet: methods.tableGet,
-  demandDetailTableHide: methods.demandDetailTableHide,
-  taskClaimTableHide: methods.taskClaimTableHide,
   jobRewardTableHide: methods.jobRewardTableHide,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContainersJobDemandManagerSearch)
+export default connect(mapStateToProps, mapDispatchToProps)(ContainersTaskClaimManagerSearch)

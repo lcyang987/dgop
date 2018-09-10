@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SingleTable from '@/components/common/SingleTable';
 
-class ComponentsMachineManagerDemandDetailTable extends Component {
+class ComponentsJobDemandManagerDemandDetailTable extends Component {
   static propTypes = {
+    dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
     taskClaimTableVisible: PropTypes.bool.isRequired,
     taskClaimTableSearchData: PropTypes.object.isRequired,
     get: PropTypes.func.isRequired,
     hide: PropTypes.func.isRequired,
+    depositDetailGet: PropTypes.func.isRequired,
   }
   render() {
     let columns = [{
@@ -36,7 +38,7 @@ class ComponentsMachineManagerDemandDetailTable extends Component {
       title: '保证金金额',
       dataIndex: 'depositAmount',
       align: 'right',
-      render: text => `￥${text}`,
+      render: (text, record) => <a onClick={this.props.depositDetailGet.bind(this, record)}>￥{text}</a>,
     }, {
       title: '已分配数量',
       dataIndex: 'allocateQuantity',
@@ -60,8 +62,8 @@ class ComponentsMachineManagerDemandDetailTable extends Component {
         </span>
       ),
     }]
-    return <SingleTable columns={columns} table={this.props.table.filter(t => t.id === this.props.taskClaimTableSearchData.id)}  {...this.props} />
+    return <SingleTable columns={columns} table={this.props.table.filter(t => t.id === this.props.taskClaimTableSearchData.id)} {...this.props} />
   }
 };
 
-export default ComponentsMachineManagerDemandDetailTable;
+export default ComponentsJobDemandManagerDemandDetailTable;

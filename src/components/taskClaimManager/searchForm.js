@@ -18,14 +18,14 @@ class ComponentsJobDemandManagerSearchForm extends Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <CommonSearchForm {...this.props} loading={this.props.loading || this.props.table.some(t => t.loading)}>
-        <FormItem label={'联系人姓名'}>
-          {getFieldDecorator('contactName', {
+        <FormItem label={'作业类型'}>
+          {getFieldDecorator('jobTypeName', {
             rules: [{
               max: 20,
               message: '不能超过20个字'
             }],
           })(
-            <Input placeholder={'例如：李四'} />
+            <Input placeholder={'例如：收割'} />
           )}
         </FormItem>
         <FormItem label={'需求编号'}>
@@ -43,42 +43,6 @@ class ComponentsJobDemandManagerSearchForm extends Component {
             <Select style={{ minWidth: 72 }}>
               {
                 [['', '所有']].concat(Object.entries(this.props.dictData.jobDemandManager_status)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
-              }
-            </Select>
-          )}
-        </FormItem>
-        <FormItem label={'审核状态'}>
-          {getFieldDecorator('auditStatus')(
-            <Select style={{ minWidth: 94 }}>
-              {
-                [['', '所有']].concat(Object.entries(this.props.dictData.jobDemandManager_auditStatus)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
-              }
-            </Select>
-          )}
-        </FormItem>
-        <FormItem label={'保证金状态'}>
-          {getFieldDecorator('depositStatus')(
-            <Select style={{ minWidth: 72 }}>
-              {
-                [['', '所有']].concat(Object.entries(this.props.dictData.jobDemandManager_depositStatus)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
-              }
-            </Select>
-          )}
-        </FormItem>
-        <FormItem label={'发布状态'}>
-          {getFieldDecorator('publishStatus')(
-            <Select style={{ minWidth: 72 }}>
-              {
-                [['', '所有']].concat(Object.entries(this.props.dictData.jobDemandManager_publishStatus)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
-              }
-            </Select>
-          )}
-        </FormItem>
-        <FormItem label={'作业状态'}>
-          {getFieldDecorator('jobStatus')(
-            <Select style={{ minWidth: 72 }}>
-              {
-                [['', '所有']].concat(Object.entries(this.props.dictData.jobDemandManager_jobStatus)).map(t => <Option key={t[0]} value={t[0]}>{t[1]}</Option>)
               }
             </Select>
           )}

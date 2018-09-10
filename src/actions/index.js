@@ -15,6 +15,9 @@ import jobDemandManager from './jobDemandManager';
 import revenue from './revenue';
 import order from './order';
 import memberManager from './memberManager';
+import depositManager from './depositManager';
+import taskClaimManager from './taskClaimManager';
+import jobRewardManager from './jobRewardManager';
 
 export const LOGIN = login;
 export const DICT = dict;
@@ -40,3 +43,6 @@ export const JOBDEMAND_MANAGER = jobDemandManager;
 export const REVENUE = revenue;
 export const ORDER = order;
 export const MEMBER_MANAGER = memberManager;
+export const DEPOSIT_MANAGER = depositManager;
+export const TASKCLAIM_MANAGER = taskClaimManager;
+export const JOBREWARD_MANAGER = jobRewardManager;

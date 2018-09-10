@@ -15,6 +15,9 @@ import jobDemandManager from './jobDemandManager';
 import revenue from './revenue';
 import order from './order';
 import memberManager from './memberManager';
+import depositManager from './depositManager';
+import taskClaimManager from './taskClaimManager';
+import jobRewardManager from './jobRewardManager';
 
 export default combineReducers({
   login,
@@ -33,4 +36,7 @@ export default combineReducers({
   revenue,
   order,
   memberManager,
+  depositManager,
+  taskClaimManager,
+  jobRewardManager,
 });

@@ -8,12 +8,14 @@ import ThisTable from '@/containers/jobDemandManager/table';
 import ThisDemandDetailTable from '@/containers/jobDemandManager/demandDetailTable';
 import ThisTaskClaimTable from '@/containers/jobDemandManager/taskClaimTable';
 import ThisJobRewardTable from '@/containers/jobDemandManager/jobRewardTable';
+import ThisDepositModal from '@/containers/jobDemandManager/depositModal';
 import CommonMap from '@/components/common/Map';
 
 class ComponentsJobDemandManager extends Component {
   static propTypes = {
     demandDetailTableVisible: PropTypes.bool.isRequired,
     taskClaimTableVisible: PropTypes.bool.isRequired,
+    jobRewardTableVisible: PropTypes.bool.isRequired,
     data: PropTypes.object.isRequired,
     visible: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
@@ -46,6 +48,7 @@ class ComponentsJobDemandManager extends Component {
               }
             </React.Fragment> : ''
         }
+        <ThisDepositModal />
         <CommonMap {...this.props} />
       </React.Fragment>
     )

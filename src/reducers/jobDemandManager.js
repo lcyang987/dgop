@@ -204,6 +204,184 @@ const jobRewardTable = (state = jobRewardTableInitState, action) => {
   }
 };
 
+const depositModalInitState = {
+  visible: false,
+  loading: false,
+  title: '',
+};
+
+const depositModal = (state = depositModalInitState, action) => {
+  switch (action.type) {
+    case actionTypes.DEPOSIT_MODAL_SHOW:
+      return {
+        ...state,
+        title: action.value,
+        visible: true
+      }
+    case actionTypes.DEPOSIT_MODAL_HIDE:
+      return {
+        ...state,
+        visible: false
+      }
+    default:
+      return state
+  }
+};
+
+const depositDetailTableInitState = {
+  data: [],
+  visible: false,
+  loading: false,
+  count: 0,
+  searchData: {
+    currentPage: 1,
+    pageSize: 10,
+  },
+  params: {},
+};
+
+const depositDetailTable = (state = depositDetailTableInitState, action) => {
+  switch (action.type) {
+    case thunkTypes.depositDetailTableGet.REQUESTTYPE:
+      return {
+        ...state,
+        searchData: {
+          ...state.searchData,
+          ...action.params,
+        },
+        loading: true,
+      }
+    case thunkTypes.depositDetailTableGet.SUCCESSTYPE:
+      return {
+        ...state,
+        data: action.response.result,
+        count: action.response.count,
+        loading: false
+      }
+    case thunkTypes.depositDetailTableGet.FAILURETYPE:
+      return {
+        ...state,
+        loading: false,
+      }
+    case actionTypes.DEPOSITDETAIL_TABLE_SHOW:
+      return {
+        ...state,
+        visible: true
+      }
+    case actionTypes.DEPOSITDETAIL_TABLE_HIDE:
+      return {
+        ...state,
+        visible: false
+      }
+    default:
+      return state
+  }
+};
+
+const depositFlowTableInitState = {
+  data: [],
+  visible: false,
+  loading: false,
+  count: 0,
+  searchData: {
+    currentPage: 1,
+    pageSize: 10,
+  },
+  params: {},
+};
+
+const depositFlowTable = (state = depositFlowTableInitState, action) => {
+  switch (action.type) {
+    case thunkTypes.depositFlowTableGet.REQUESTTYPE:
+      return {
+        ...state,
+        searchData: {
+          ...state.searchData,
+          ...action.params,
+        },
+        loading: true,
+      }
+    case thunkTypes.depositFlowTableGet.SUCCESSTYPE:
+      return {
+        ...state,
+        data: action.response.result,
+        count: action.response.count,
+        loading: false
+      }
+    case thunkTypes.depositFlowTableGet.FAILURETYPE:
+      return {
+        ...state,
+        loading: false,
+      }
+    case actionTypes.DEPOSITFLOW_TABLE_SHOW:
+      return {
+        ...state,
+        visible: true
+      }
+    case actionTypes.DEPOSITFLOW_TABLE_HIDE:
+      return {
+        ...state,
+        visible: false
+      }
+    default:
+      return state
+  }
+};
+
+const depositRefundFormInitState = {
+  data: {},
+  visible: false,
+  loading: false,
+  title: '',
+}
+
+const depositRefundForm = (state = depositRefundFormInitState, action) => {
+  switch (action.type) {
+    case actionTypes.DEPOSITREFUNDFORM_SETDATA:
+      return {
+        ...state,
+        data: action.params,
+      }
+    case actionTypes.DEPOSITREFUNDFORM_RESET:
+      return {
+        ...state,
+        data: depositRefundFormInitState.data,
+      }
+    case actionTypes.DEPOSITREFUNDFORM_SHOW:
+      return {
+        ...state,
+        title: action.value,
+        visible: true,
+      }
+    case actionTypes.DEPOSITREFUNDFORM_HIDE:
+      return {
+        ...state,
+        visible: false,
+      }
+    case thunkTypes.depositRefundFormSubmit.REQUESTTYPE:
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          ...action.params,
+        },
+        loading: true,
+      }
+    case thunkTypes.depositRefundFormSubmit.SUCCESSTYPE:
+      return {
+        ...state,
+        loading: false,
+      }
+    case thunkTypes.depositRefundFormSubmit.FAILURETYPE:
+      return {
+        ...state,
+        loading: false,
+      }
+    default:
+      return state
+  }
+}
+
 const mapInitState = {
   data: {},
   visible: false,
@@ -243,5 +421,9 @@ export default combineReducers({
   demandDetailTable,
   taskClaimTable,
   jobRewardTable,
+  depositModal,
+  depositDetailTable,
+  depositFlowTable,
+  depositRefundForm,
   map,
 });

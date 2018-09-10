@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Popconfirm } from 'antd';
 import PropTypes from 'prop-types';
-import SingleTable from '@/components/common/SingleTable';
+import PagesTable from '@/components/common/PagesTable';
 
 class ComponentsJobDemandManagerJobRewardTable extends Component {
   static propTypes = {
@@ -9,9 +9,14 @@ class ComponentsJobDemandManagerJobRewardTable extends Component {
     table: PropTypes.array.isRequired,
     frozen: PropTypes.func.isRequired,
     unfrozen: PropTypes.func.isRequired,
+    jobDemandManagerShow: PropTypes.func.isRequired,
   }
   render() {
     let columns = [{
+      title: '需求编号',
+      dataIndex: 'demandNo',
+      render: (text, record) => <a onClick={this.props.jobDemandManagerShow.bind(this, record)}>{text}</a>
+    }, {
       title: '结算单号',
       dataIndex: 'settlementNo',
     }, {
@@ -67,7 +72,7 @@ class ComponentsJobDemandManagerJobRewardTable extends Component {
         </span>
       ),
     }]
-    return <SingleTable columns={columns} {...this.props} />
+    return <PagesTable columns={columns} {...this.props} />
   }
 };
 

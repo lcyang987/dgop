@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { JOBDEMAND_MANAGER } from '@/actions';
 import ThisTable from '@/components/jobDemandManager/taskClaimTable';
 
-class ContainersMachineManagerTaskClaimTable extends Component {
+class ContainersJobDemandManagerTaskClaimTable extends Component {
   static propTypes = {
     dictData: PropTypes.object.isRequired,
     table: PropTypes.array.isRequired,
@@ -48,4 +48,4 @@ const mapDispatchToProps = {
   jobRewardTableHide: methods.jobRewardTableHide,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContainersMachineManagerTaskClaimTable);
+export default connect(mapStateToProps, mapDispatchToProps)(ContainersJobDemandManagerTaskClaimTable);

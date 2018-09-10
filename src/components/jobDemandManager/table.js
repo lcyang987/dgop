@@ -11,7 +11,6 @@ class ComponentsJobDemandManagerTable extends Component {
     demandDetailTableSearchData: PropTypes.object.isRequired,
     get: PropTypes.func.isRequired,
     hide: PropTypes.func.isRequired,
-    demandDetailTableHide: PropTypes.func.isRequired,
     showMap: PropTypes.func.isRequired,
   }
   render() {

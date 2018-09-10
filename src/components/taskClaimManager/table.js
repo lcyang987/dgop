@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SingleTable from '@/components/common/SingleTable';
+import PagesTable from '@/components/common/PagesTable';
 
 class ComponentsJobDemandManagerTaskClaimTable extends Component {
   static propTypes = {
@@ -18,6 +19,10 @@ class ComponentsJobDemandManagerTaskClaimTable extends Component {
     }, {
       title: '机手手机',
       dataIndex: 'memberPhone',
+    }, {
+      title: '需求编号',
+      dataIndex: 'demandNo',
+      render: (text, record) => <a onClick={this.props.jobDemandManagerShow.bind(this, record)}>{text}</a>
     }, {
       title: '作业类型名称',
       dataIndex: 'jobTypeName',
@@ -41,11 +46,6 @@ class ComponentsJobDemandManagerTaskClaimTable extends Component {
       align: 'right',
       render: text => `￥${text}`,
     }, {
-      title: '机手质量保证金余额',
-      dataIndex: 'qualityDepositAmount',
-      align: 'right',
-      render: text => `￥${text}`,
-    }, {
       title: '状态',
       dataIndex: 'status',
       render: text => this.props.dictData.jobDemandManager_taskStatus[text],
@@ -61,7 +61,15 @@ class ComponentsJobDemandManagerTaskClaimTable extends Component {
         </span>
       ),
     }]
-    return <SingleTable columns={columns} table={this.props.table.filter(t => t.id === this.props.jobRewardTableSearchData.id)} {...this.props} />
+    return (
+      <React.Fragment>
+        {
+          this.props.jobRewardTableVisible ?
+            <SingleTable {...this.props} table={this.props.table.filter(t => t.id === this.props.jobRewardTableSearchData.id)} columns={columns} scroll={{ x: true }} className="tablexscroll" /> :
+            <PagesTable {...this.props} columns={columns} scroll={{ x: true }} className="tablexscroll" />
+        }
+      </React.Fragment>
+    )
   }
 };
 

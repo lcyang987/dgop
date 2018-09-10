@@ -21,6 +21,9 @@ import JobDemandManager from '@/containers/jobDemandManager';
 import Revenue from '@/components/revenue';
 import Order from '@/components/order';
 import MemberManager from '@/containers/memberManager';
+import DepositManager from '@/containers/depositManager';
+import TaskClaimManager from '@/containers/taskClaimManager';
+import JobRewardManager from '@/components/jobRewardManager';
 
 class ComponentsTabs extends Component {
   static components = {
@@ -43,6 +46,9 @@ class ComponentsTabs extends Component {
     Revenue,
     Order,
     MemberManager,
+    DepositManager,
+    TaskClaimManager,
+    JobRewardManager,
   }
   static propTypes = {
     tabs: PropTypes.array.isRequired,
@@ -117,7 +123,7 @@ class ComponentsTabs extends Component {
     const name = path.split('/')[path.split('/').length - 1];
     const SpecificComponent = ComponentsTabs.components[name];
     return SpecificComponent ?
-      <SpecificComponent /> :
+      <SpecificComponent history={this.props.history} /> :
       <h3>404</h3>
   }
   render() {
